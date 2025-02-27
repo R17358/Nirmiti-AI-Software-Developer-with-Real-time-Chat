@@ -1,0 +1,22 @@
+.dashboard-element i {
+    margin-right: 8px;
+    font-size: 20px;
+  }
+  
+  /* Ensures icons inherit the white color */
+  .bx {
+    color: white;
+  }
+
+  .sidebar{
+    height: 91vh;
+    width: 5vw;
+  }
+
+  .Header-sidebar{
+    width: 5vw;
+    height: 92vh;
+    margin-top: 8vh;
+}
+
+

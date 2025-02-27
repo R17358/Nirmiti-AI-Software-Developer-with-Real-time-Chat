@@ -1,0 +1,100 @@
+.code-editor-tabs {
+    display: flex;
+      gap: 10px;
+      padding: 10px;
+      background: #282c34;
+      overflow-x: auto;
+      width: 45vw;
+  }
+  .code-editor-tabs::-webkit-scrollbar {
+    display: none;
+    scroll-behavior: smooth;
+  }
+
+  .no-current-file{
+    color: white;
+  }
+
+  .code-editor{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .code-editor-right{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    width: 68.51vw;
+    background: #282c34;
+  }
+
+  .tab {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    background: #3a3f4b;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .tab.active {
+    background: #61dafb;
+    color: black;
+  }
+  
+  .close-btn {
+    margin-left: 8px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .file-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background: #282c34;
+    overflow-y: auto;
+  }
+
+  .file-list::-webkit-scrollbar {
+    display: none;
+    scroll-behavior: smooth;
+  }
+  
+  .file-list button{
+    padding: 10px 16px;
+    margin-bottom: -11px;
+    cursor: pointer;
+    font-style: italic;
+    font-weight: 500;
+    background: #0e031a;
+    color: #0bd4a2;
+    border-radius: 9px;
+}
+
+.file-list button:hover{
+    background: #0bd4a2;
+    color: #0e031a;
+}
+
+.code-editor-top{
+  display: flex;
+  flex-direction: row;
+}
+  
+.copy-button button{
+  width: 2vw;
+  margin-top: 40%;
+  border-radius: 10px;
+  height: -15px;
+  background: bottom;
+  font-size: x-large;
+  border: none;
+  cursor: pointer;
+}

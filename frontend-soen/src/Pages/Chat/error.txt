@@ -1,0 +1,4 @@
+Failed to parse message: SyntaxError: Unexpected non-whitespace character after JSON at position 2741 (line 1 column 2742)
+    at JSON.parse (<anonymous>)
+    at appendIncomingMessage (Chat.jsx:144:36)
+    at Socket2.<anonymous> (Chat.jsx:45:13)

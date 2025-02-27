@@ -1,0 +1,55 @@
+.header{
+    width:100vw;
+    height:8vh;
+    background-color: rgb(25 31 40);
+    display: flex;
+    flex-direction: row;
+}
+
+.header .logo img{
+  width: 45px;
+  height: 45px;
+  margin-left: 62px;
+  margin-top: 7px;
+}
+
+.button-collapse{
+    display: flex;
+    flex-direction: row;
+}
+
+.button-collapse button{
+    padding: 14px 29.6px;
+    background-color: #00000000;
+    color: white;
+    border: none;
+    margin-left: -16px;
+    font-size: x-large;
+    cursor: pointer;
+  }
+
+  .header-username{
+    display: flex;
+    flex-direction: row;
+    margin-left: 66vw;
+    color: #f4dcff91;
+    font-size: 12px;
+  }
+  
+  .header-username a{
+    margin-top: 17px;
+    margin-left: 8px;
+    font-size: x-large;
+
+  }
+
+  .header-username h2{
+    font-size: 17px;
+    font-weight: 500;
+    font-family: sans-serif
+  }
+
+  .bx .bx-menu{
+    font-size: x-large;
+    cursor: pointer;
+  }

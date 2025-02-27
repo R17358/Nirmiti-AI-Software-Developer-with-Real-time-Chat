@@ -1,0 +1,96 @@
+.login-form{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.login-container{
+    margin-top: 12vh;
+    margin-right: 14vw;
+}
+
+input::placeholder{
+    font-style: italic;
+    text-align: center;
+}
+
+.username{
+    display: flex;
+    flex-direction: row;
+}
+
+.password{
+    display: flex;
+    flex-direction: row;
+}
+
+.login-form{
+    display: flex;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    flex-direction: column;
+    align-items: baseline;
+    margin-top: 30px;
+    padding: 29px 24px;
+    width: 24vw;
+    height: 36.4vh;
+}
+
+.remember{
+    display: flex;
+    flex-direction: row;
+}
+
+.login-input input{
+    margin-left: 3px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    border: 0.2px solid #4c4545;
+    margin-bottom: 8px;
+    width: 20vw;
+    text-align: center;
+}
+
+
+.login-container .logo{
+    display: flex;
+    justify-content: center;
+}
+
+.login-button{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.login-button a{
+    text-decoration: none;
+    font-size: large;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.login-button button{
+    padding: 8px 11px;
+    background-color: #001046;
+    border-radius: 9px;
+    color: white;
+    font-weight: 600;
+}
+
+.login-button button:hover{
+    cursor: pointer;
+    background-color: rgb(181, 10, 10);
+}
+
+.logo img{
+    height: 254px;
+    width: 392px;
+    border-radius: 13px;
+}
+
+
+.login-form:hover{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}

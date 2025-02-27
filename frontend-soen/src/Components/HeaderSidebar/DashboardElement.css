@@ -1,0 +1,33 @@
+.Dashboard{
+    display: flex;
+    flex-direction: row;
+    background-color: #2e3a4b;
+    width: 10vw;
+    height: 3.95vh;
+    padding: 13px 27px;
+    color: white;
+    transition:  width 0.8s ease-in-out;
+}
+.Dashboard:hover{
+    background-color: rgb(37, 31, 31);
+    cursor: pointer;
+}
+
+.Dashboard.active{
+    background-color: red;
+    transition: all ease-in-out 0.8s;
+}
+
+.Dashboard .dashboard-icon{
+    width: 42px;
+    font-size: x-large;
+    height: 0px;
+}
+
+.Dashboard .dashboard-text{
+    font-size: 8px;
+}
+
+.dashboard-element{
+    width: 5vw;
+}
