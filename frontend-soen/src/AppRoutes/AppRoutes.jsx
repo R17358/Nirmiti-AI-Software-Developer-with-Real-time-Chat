@@ -34,7 +34,7 @@ function AppRoutes() {
             <Route path="/register" element={<SignUp />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/logout" element={<LogOut />} />
-            <Route path="/chat" element={collapse && <Chat collapse={collapse} />} />
+            <Route path="/chat" element={<Chat collapse={collapse} />} />
         </Routes>
         </div>
     </Router>
