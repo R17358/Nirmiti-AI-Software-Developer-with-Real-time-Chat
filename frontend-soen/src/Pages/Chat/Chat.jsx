@@ -212,36 +212,49 @@ function Chat({collapse}) {
         // Add "ai-class" dynamically
         messageDiv.classList.toggle("ai-class", sender === "AI");
     
-        let messageSections = [];
+        if (sender === "AI") { 
 
-if (oneMessage) messageSections.push(oneMessage);
-if (message?.createCommands?.commands?.length) {
-    messageSections.push(
-        `Create Commands:\n\`\`\`sh\n${message["createCommands"]["mainItem"]}\n${message["createCommands"]["commands"].join("\n")}\n\`\`\``
-    );
-}
-if (message?.buildCommands?.commands?.length) {
-    messageSections.push(
-        `Build Commands:\n\`\`\`sh\n${message["buildCommands"]["mainItem"]}\n${message["buildCommands"]["commands"].join("\n")}\n\`\`\``
-    );
-}
-if (message?.startCommands?.commands?.length) {
-    messageSections.push(
-        `Run Commands:\n\`\`\`sh\n${message["startCommands"]["mainItem"]}\n${message["startCommands"]["commands"].join("\n")}\n\`\`\``
-    );
-}
-if (message?.fileTree?.text) messageSections.push(message.fileTree.text);
+            const sections = [];
+            if (oneMessage) {
+                sections.push(oneMessage);
+            }
+            
+            if (message?.createCommands?.commands?.length) {
+                sections.push(
+                    `Create Commands:\n\`\`\`sh\n${message["createCommands"]["mainItem"]}\n${message["createCommands"]["commands"].join("\n")}\n\`\`\``
+                );
+            }
+            
+            if (message?.buildCommands?.commands?.length) {
+                sections.push(
+                    `Build Commands:\n\`\`\`sh\n${message["buildCommands"]["mainItem"]}\n${message["buildCommands"]["commands"].join("\n")}\n\`\`\``
+                );
+            }
+            
+            if (message?.startCommands?.commands?.length) {
+                sections.push(
+                    `Run Commands:\n\`\`\`sh\n${message["startCommands"]["mainItem"]}\n${message["startCommands"]["commands"].join("\n")}\n\`\`\``
+                );
+            }
+            
+            if (message?.fileTree?.text) {
+                sections.push(message.fileTree.text);
+            }
+            
 
-let messageContent = messageSections.join("\n\n");
-
-if (messageContent.trim()) {
-    const markdownMessage = React.createElement(Markdown, { children: messageContent });
-    ReactDOM.render(markdownMessage, messageDiv);
-} else {
-    messageDiv.innerHTML = "";
-}
-
+            const markdownMessage = React.createElement(
+                Markdown,
+                {
+                    children: sections.join("\n\n"),
+                }
+            );
         
+            ReactDOM.render(markdownMessage, messageDiv);
+        }
+        
+        else {
+            messageDiv.innerHTML = `<p>${message?.text}</p>`; 
+        }
     
         chatBoxMessageSender.appendChild(chatMe);
         chatBoxMessageSender.appendChild(messageDiv);
