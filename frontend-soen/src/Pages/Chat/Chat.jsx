@@ -9,8 +9,6 @@ import { initializeSocket, receiveMessage, sendMessage } from '../../api/socket'
 import Markdown from 'markdown-to-jsx'
 import ReactDOM from 'react-dom';
 import CodeEditor from './CodeEditor';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 function Chat({collapse}) {
 
@@ -37,16 +35,23 @@ function Chat({collapse}) {
         dispatch(getAllUsers());
     }, [dispatch]);
 
-    useEffect(()=>{
-        initializeSocket(project?._id);
+    useEffect(()=> {
+    initializeSocket(project?._id);
+    console.log("Project ID:", project?._id);
+    console.log("Socket initialized");
+    const handleMessage = (data) => {
+        console.log("Incoming message:");
+        console.log(data);
+        appendIncomingMessage(data);
+    };
 
-        receiveMessage("project-message", (data) => {
-            console.log("Incoming message:");
-            console.log(data);
-            appendIncomingMessage(data);
-        });
+    receiveMessage("project-message", handleMessage);
 
-    }, [])
+    return () => {
+        receiveMessage("project-message", null);
+    };
+}, [project?._id]);
+
 
     useEffect(() => {
         scrollToBottom();
@@ -160,7 +165,6 @@ function Chat({collapse}) {
                     throw new Error("Message is not valid JSON");
                 }
             } catch (error) {
-                toast.error("Failed to parse message");
                 console.warn("Failed to parse message:", error);
                 console.warn("Received a plain text message:", data.message);
                 message = { text: data.message }; // Treat it as plain text
@@ -170,7 +174,7 @@ function Chat({collapse}) {
         }
         
         console.log("Parsed message:", message); // Should now always be an object
-        const oneMessage = message.text;
+        const oneMessage = message?.text || "Hello";
         console.log("One message:", oneMessage);
         const extractedFilesVar = extractFiles(message);
         // console.log("Extracted files variable:", extractedFilesVar);
