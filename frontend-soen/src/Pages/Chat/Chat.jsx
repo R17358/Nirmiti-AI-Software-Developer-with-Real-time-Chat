@@ -14,10 +14,9 @@ function Chat({collapse}) {
 
     const [project, setProject] = useState(null);
 
-    console.log("Chat component");
-
     useEffect(() => {
         const storedProject = localStorage.getItem("selectedProject");
+        console.log("Stored Project:", storedProject);
         if (storedProject) {
             setProject(JSON.parse(storedProject));
         }
