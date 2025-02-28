@@ -1,8 +1,8 @@
-import socket from "socket.io-client";
 import { io } from "socket.io-client";
 
 let socketInstance = null;
 
+//wss://soen-ai-software-developer.onrender.com
 
 export const initializeSocket = (projectId) => {
     socketInstance = io('wss://soen-ai-software-developer.onrender.com', {

@@ -44,7 +44,8 @@ function Chat({collapse}) {
         initializeSocket(project?._id);
 
         receiveMessage("project-message", (data) => {
-            console.log("Incoming message:", data);
+            console.log("Incoming message:");
+            console.log(data);
             appendIncomingMessage(data);
         });
 
