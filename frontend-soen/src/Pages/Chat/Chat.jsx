@@ -245,7 +245,31 @@ function Chat({collapse}) {
             const markdownMessage = React.createElement(
                 Markdown,
                 {
-                    children: sections.join("\n\n"),
+                    children: `
+                    ${oneMessage?oneMessage + "\n\n" : ""}
+                    ${message?.createCommands?.commands?.length? 
+                        `Create Commands:
+                        \`\`\`sh
+                        ${message["createCommands"]["mainItem"]}
+                        ${message["createCommands"]["commands"].map(cmd => `\n${cmd}`).join(",")}
+                        \`\`\`
+                        ` : ""}
+                        ${message?.buildCommands?.commands?.length? 
+                            `Build Commands:
+                            \`\`\`sh
+                            ${message["buildCommands"]["mainItem"]}
+                            ${message["buildCommands"]["commands"].join(",\n")}
+                            \`\`\`
+                            ` : ""}
+                            ${message?.startCommands?.commands?.length ? 
+                            `Run Commands:
+                            \`\`\`sh
+                            ${message["startCommands"]["mainItem"]}
+                            ${message["startCommands"]["commands"].join(",\n")}
+                            \`\`\`
+                            ` : ""}
+        ${message?.fileTree?.text ? message.fileTree.text + "\n" : ""}
+        `
                 }
             );
         
