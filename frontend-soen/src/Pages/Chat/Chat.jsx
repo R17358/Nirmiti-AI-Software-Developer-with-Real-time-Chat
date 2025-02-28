@@ -11,9 +11,23 @@ import ReactDOM from 'react-dom';
 import CodeEditor from './CodeEditor';
 
 function Chat({collapse}) {
+
+    const [project, setProject] = useState(null);
+
     console.log("Chat component");
-    const location = useLocation();
-    const project = location.state?.project;
+
+    useEffect(() => {
+        const storedProject = localStorage.getItem("selectedProject");
+        if (storedProject) {
+            setProject(JSON.parse(storedProject));
+        }
+    }, []);
+
+    // if (!project) {
+    //     return <h2>No project data available</h2>;
+    // }
+
+    
     console.log("Project:", project);
 
     const dispatch = useDispatch();

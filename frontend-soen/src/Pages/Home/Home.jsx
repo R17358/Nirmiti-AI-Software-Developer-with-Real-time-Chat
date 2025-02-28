@@ -52,9 +52,10 @@ function Home() {
     }
 
     const goToProject = (project) => {
-        navigate(`/chat`, { state: { project } })
-
-    }
+        localStorage.setItem("selectedProject", JSON.stringify(project)); 
+        navigate(`/chat`);
+    };
+    
 
     return (
         <div className='home'>
