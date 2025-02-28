@@ -212,38 +212,35 @@ function Chat({collapse}) {
         // Add "ai-class" dynamically
         messageDiv.classList.toggle("ai-class", sender === "AI");
     
-        if (sender === "AI") {
-            let messageContent = "";
-        
-            if (oneMessage) {
-                messageContent += oneMessage + "\n\n";
-            }
-        
-            if (message?.createCommands?.commands?.length) {
-                messageContent += `Create Commands:\n\n\`\`\`sh\n${message["createCommands"]["mainItem"]}\n${message["createCommands"]["commands"].join("\n")}\n\`\`\`\n\n`;
-            }
-        
-            if (message?.buildCommands?.commands?.length) {
-                messageContent += `Build Commands:\n\n\`\`\`sh\n${message["buildCommands"]["mainItem"]}\n${message["buildCommands"]["commands"].join("\n")}\n\`\`\`\n\n`;
-            }
-        
-            if (message?.startCommands?.commands?.length) {
-                messageContent += `Run Commands:\n\n\`\`\`sh\n${message["startCommands"]["mainItem"]}\n${message["startCommands"]["commands"].join("\n")}\n\`\`\`\n\n`;
-            }
-        
-            if (message?.fileTree?.text) {
-                messageContent += message.fileTree.text + "\n\n";
-            }
-        
-            if (messageContent.trim()) {
-                const markdownMessage = React.createElement(Markdown, { children: messageContent.trim() });
-                ReactDOM.render(markdownMessage, messageDiv);
-            } else {
-                messageDiv.innerHTML = "";
-            }
-        } else {
-            messageDiv.innerHTML = `<p>${message?.text || ""}</p>`;
-        }
+        let messageSections = [];
+
+if (oneMessage) messageSections.push(oneMessage);
+if (message?.createCommands?.commands?.length) {
+    messageSections.push(
+        `Create Commands:\n\`\`\`sh\n${message["createCommands"]["mainItem"]}\n${message["createCommands"]["commands"].join("\n")}\n\`\`\``
+    );
+}
+if (message?.buildCommands?.commands?.length) {
+    messageSections.push(
+        `Build Commands:\n\`\`\`sh\n${message["buildCommands"]["mainItem"]}\n${message["buildCommands"]["commands"].join("\n")}\n\`\`\``
+    );
+}
+if (message?.startCommands?.commands?.length) {
+    messageSections.push(
+        `Run Commands:\n\`\`\`sh\n${message["startCommands"]["mainItem"]}\n${message["startCommands"]["commands"].join("\n")}\n\`\`\``
+    );
+}
+if (message?.fileTree?.text) messageSections.push(message.fileTree.text);
+
+let messageContent = messageSections.join("\n\n");
+
+if (messageContent.trim()) {
+    const markdownMessage = React.createElement(Markdown, { children: messageContent });
+    ReactDOM.render(markdownMessage, messageDiv);
+} else {
+    messageDiv.innerHTML = "";
+}
+
         
     
         chatBoxMessageSender.appendChild(chatMe);
