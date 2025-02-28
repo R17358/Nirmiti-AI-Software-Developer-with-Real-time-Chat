@@ -233,7 +233,9 @@ function Chat({collapse}) {
                             \`\`\`
                             ` : ""}
         
-        ${message?.fileTree?.text ? message.fileTree.text + "\n\n" : ""}  
+        ${message?.fileTree?.text ? message.fileTree.text + "\n\n" : ""}
+        
+        ${message?.text ? message.text + "\n\n" : ""}
         
         
         `
