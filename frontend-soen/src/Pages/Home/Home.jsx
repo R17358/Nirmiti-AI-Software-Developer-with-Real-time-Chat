@@ -53,6 +53,7 @@ function Home() {
 
     const goToProject = (project) => {
         localStorage.setItem("selectedProject", JSON.stringify(project)); 
+        console.log(project);
         navigate(`/chat`);      
     };
     
