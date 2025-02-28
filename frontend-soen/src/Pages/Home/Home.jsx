@@ -12,11 +12,14 @@ function Home() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
+    console.log("Home");
+    
     useEffect(() => {
         if (!isAuthenticated) {
             navigate('/login')
         }
+        console.log("Home useEffect");
+        
     }, [isAuthenticated, navigate])
 
     useEffect(()=>{
