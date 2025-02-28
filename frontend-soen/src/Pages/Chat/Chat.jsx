@@ -41,9 +41,10 @@ function Chat({collapse}) {
     }, [dispatch]);
 
     useEffect(()=>{
-        initializeSocket(project._id);
+        initializeSocket(project?._id);
 
         receiveMessage("project-message", (data) => {
+            console.log("Incoming message:", data);
             appendIncomingMessage(data);
         });
 
@@ -146,6 +147,7 @@ function Chat({collapse}) {
     const appendIncomingMessage = (data) => {
         let message = {};
         let sender = data.sender;
+
         console.log("data");
         console.log(data);
     
