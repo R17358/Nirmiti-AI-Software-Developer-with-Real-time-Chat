@@ -30,7 +30,7 @@ function AppRoutes() {
         <div className="main-container">
         <ToastContainer position="top-right" autoClose={2000} />     
             <Routes>
-            <Route path="/" element={<Home />} />
+            {/* <Route path="/" element={<Home />} /> */}
             <Route path="/register" element={<SignUp />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/logout" element={<LogOut />} />
