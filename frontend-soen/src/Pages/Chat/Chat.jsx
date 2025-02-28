@@ -57,9 +57,6 @@ function Chat({collapse}) {
 
     receiveMessage("project-message", handleMessage);
 
-    return () => {
-        receiveMessage("project-message", null);
-    };
 }, [project?._id]);
 
 
