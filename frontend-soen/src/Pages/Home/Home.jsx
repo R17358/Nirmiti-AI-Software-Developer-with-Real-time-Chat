@@ -56,7 +56,6 @@ function Home() {
         navigate(`/chat`);
     };
     
-
     return (
         <div className='home'>
             <div className="new-project">

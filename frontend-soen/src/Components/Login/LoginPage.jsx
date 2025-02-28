@@ -62,10 +62,6 @@ function LoginPage() {
                             </div>
                         </div>
                     </div>
-                    <div className="remember">
-                        <input type="checkbox" name="check" id="check" />
-                        <h5>Remember me</h5>
-                    </div>
                     <div className="forgot">
                         <p>forgot password</p>
                     </div>
