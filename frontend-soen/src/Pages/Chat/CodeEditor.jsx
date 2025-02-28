@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./CodeEditor.css";
 import "./Chat.css";
+import axios from "../../api/axios";
 
 const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   
