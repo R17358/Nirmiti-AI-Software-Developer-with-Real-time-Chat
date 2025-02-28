@@ -29,7 +29,7 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
       },
       withCredentials: true,
   };
-      axios.post(`/update-file-tree`, { projectId: currProject._id, fileTree }, config)
+      axios.post(`/update-file-tree`, { projectId: currProject?._id, fileTree }, config)
           .then((response) => {
               console.log("File tree saved:", response.data);
           })
