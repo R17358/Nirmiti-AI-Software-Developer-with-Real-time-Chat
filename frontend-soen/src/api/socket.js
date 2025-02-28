@@ -13,8 +13,15 @@ export const initializeSocket = (projectId) => {
             projectId
         }
     });
+
+    // Handle errors
+    socketInstance.on("connect_error", (err) => {
+        console.error("WebSocket Connection Error:", err.message);
+    });
+
     return socketInstance;
 }
+
 
 export const receiveMessage = (eventName, cb) => {
     socketInstance.on(eventName, cb);

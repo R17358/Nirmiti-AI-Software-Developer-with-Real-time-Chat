@@ -20,9 +20,12 @@ const server = app.listen(process.env.PORT, () => {
 const io = new Server(server, {
   cors: {
      origin: "https://soen-ai-software-developer.vercel.app",
-    // origin: "http://localhost:5173",
+     methods: ["GET", "POST"],
+     allowedHeaders: ["Authorization"],
+     credentials: true
   }
 });
+
 
 // Middleware for authentication and project validation
 io.use(async (socket, next) => {
@@ -85,6 +88,10 @@ io.on("connection", (socket) => {
       return;
     }
 
+  });
+
+  socket.on("connect_error", (err) => {
+    console.error("Socket Connection Error:", err.message);
   });
 
   socket.on("disconnect", () => {
