@@ -62,7 +62,6 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
         newFileTree[file.fileName] = { content: file.content };
       });
       setFileTree(newFileTree);
-      saveFileTree(newFileTree);
 
       // Auto open the first extracted file if none are opened
       if (openedFiles.length === 0 && extractedFiles.length > 0) {
@@ -70,6 +69,12 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
       }
     }
   }, [extractedFiles]);
+
+  useEffect(() => {
+    if (currentFile) {
+      saveFileTree(fileTree);
+    }
+  }, [fileTree]);
 
   return (
     <div className="code-editor">

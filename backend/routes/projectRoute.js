@@ -1,7 +1,6 @@
 import express from 'express';
-import { createProject, getMyAllProjects, getAllProjects, getAllProjectsByUserId, getProjectByProjectId, addUsersToProject, usersInProject} from '../controllers/projectController.js';
+import { createProject, getMyAllProjects, getAllProjects, getAllProjectsByUserId, getProjectByProjectId, addUsersToProject, usersInProject, updateFileTree} from '../controllers/projectController.js';
 import { isAuthenticatedUser, authorizeRoles } from '../middleware/auth.js';
-import { updateFileTree } from '../controllers/projectController.js';
 
 const router = express.Router();
 
