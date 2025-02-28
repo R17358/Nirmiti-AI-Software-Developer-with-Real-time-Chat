@@ -39,7 +39,6 @@ function Chat({collapse}) {
     );
 
     const messageBox = React.createRef();
-
     
     useEffect(() => {
         dispatch(getAllUsers());
@@ -126,10 +125,6 @@ function Chat({collapse}) {
         setMessage("");
     }
 
-    function getCodeFiles(jsonObj) {
-        return Object.keys(jsonObj).filter(key => key.endsWith('.js') || key.endsWith('.py'));
-    }
-
     function extractFiles(fileTree, path = "") {
         let files = [];
     
@@ -188,7 +183,6 @@ function Chat({collapse}) {
         try {
             if (message.fileTree) {
                 setFileTree(message?.fileTree);
-                files = getCodeFiles(message.fileTree); // Extract files only if fileTree exists
     
             }
         } catch (error) {   
@@ -332,7 +326,7 @@ function Chat({collapse}) {
     </div>
     <div className="right">
 
-        <CodeEditor fileTree={fileTree} setFileTree={setFileTree} extractedFiles={extractedFiles} />
+        <CodeEditor fileTree={fileTree} setFileTree={setFileTree} extractedFiles={extractedFiles} project={project}/>
 
             <div className={`colab-panel ${collabPanel ? 'show' : ''}`}>
                 <div className="collablist">

@@ -11,5 +11,6 @@ router.route('/project/userId/:userId').get(isAuthenticatedUser,getAllProjectsBy
 router.route('/project/projectId/:projectId').get(isAuthenticatedUser, getProjectByProjectId);
 router.route('/project/adduser/:projectId').post(isAuthenticatedUser, addUsersToProject );
 router.route('/project/users/:projectId').get(isAuthenticatedUser, usersInProject);
+router.route('/update-file-tree').post(isAuthenticatedUser, updateFileTree);
 
 export default router;

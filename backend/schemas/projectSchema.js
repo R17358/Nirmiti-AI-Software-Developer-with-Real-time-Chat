@@ -61,6 +61,10 @@ const projectSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    fileTree: {
+        type: Object,
+        default: {},
+    },
 
 });
 

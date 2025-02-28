@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import "./CodeEditor.css";
 import "./Chat.css";
 
-const CodeEditor = ({ fileTree, setFileTree, extractedFiles }) => {
+const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   
   const [openedFiles, setOpenedFiles] = useState([]);
   const [currentFile, setCurrentFile] = useState(null);
   const [currentFileIndex, setCurrentFileIndex] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [currProject, setCurrProject] = useState(project);
 
   const handleCopy = () => {
     const content = fileTree[currentFile]?.content || "";
@@ -15,6 +16,17 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles }) => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000); // Reset after 2s
     });
+  };
+
+  
+  const saveFileTree = (fileTree) => {
+      axios.post(`/update-file-tree`, { projectId: currProject._id, fileTree })
+          .then((response) => {
+              console.log("File tree saved:", response.data);
+          })
+          .catch((error) => {
+              console.error("Failed to save file tree:", error);
+          });
   };
 
   const openFile = (fileName) => {
@@ -41,6 +53,7 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles }) => {
         newFileTree[file.fileName] = { content: file.content };
       });
       setFileTree(newFileTree);
+      saveFileTree(newFileTree);
 
       // Auto open the first extracted file if none are opened
       if (openedFiles.length === 0 && extractedFiles.length > 0) {

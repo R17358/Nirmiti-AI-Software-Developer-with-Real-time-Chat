@@ -177,3 +177,37 @@ export const usersInProject = catchAsyncError(async (req, res, next) => {
     }
 
 });
+
+export const updateFileTree = catchAsyncError(async (req, res, next) => {
+    
+    try {
+        const projectId = req.body.projectId;
+        const fileTree = req.body.fileTree;
+
+        const project = await Project.findById(projectId);
+        
+        if (!project) {
+            return next(new ErrorHandler("Project not found", 404));
+        }
+
+        const updatedProject = await Project.findByIdAndUpdate
+        (
+            projectId,
+            { fileTree },
+            { new: true }
+        );
+
+        if (!updatedProject) {
+            return next(new ErrorHandler("Failed to update file tree", 500));
+        }
+
+        res.status(200).json({
+            success: true,
+            updatedProject
+        });
+
+    } catch (error) {
+        return next(new ErrorHandler(error.message || "Failed to update file tree", 500));
+    }
+
+}
