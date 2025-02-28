@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom';
 import CodeEditor from './CodeEditor';
 
 function Chat({collapse}) {
-
+    console.log("Chat component");
     const location = useLocation();
     const project = location.state?.project;
     console.log("Project:", project);
