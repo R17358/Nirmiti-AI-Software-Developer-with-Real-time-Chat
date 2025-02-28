@@ -16,6 +16,8 @@ const server = app.listen(process.env.PORT, () => {
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${process.env.PORT}`);
 });
 
+//http://localhost:5173
+
 const io = new Server(server, {
   cors: {
     origin: "https://soen-ai-software-developer.vercel.app",

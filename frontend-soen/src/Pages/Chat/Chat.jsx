@@ -146,7 +146,8 @@ function Chat({collapse}) {
     const appendIncomingMessage = (data) => {
         let message = {};
         let sender = data.sender;
-        // console.log(data);
+        console.log("data");
+        console.log(data);
     
         // Ensure data.message is handled correctly
         if (typeof data.message === "string") {
@@ -208,7 +209,8 @@ function Chat({collapse}) {
                 Markdown,
                 {
                     children: `
-        
+                    ${message?.text ? message.text + "\n\n" : ""}
+                    
                     ${message?.createCommands?.commands?.length ? 
                         `Create Commands:
                         \`\`\`sh
@@ -234,9 +236,6 @@ function Chat({collapse}) {
                             ` : ""}
         
         ${message?.fileTree?.text ? message.fileTree.text + "\n\n" : ""}
-        
-        ${message?.text ? message.text + "\n\n" : ""}
-        
         
         `
                 }

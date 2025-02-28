@@ -11,6 +11,9 @@ import user from "./routes/userRoute.js"
 import project from "./routes/projectRoute.js"
 import gemini from "./routes/geminiRoute.js"
 
+//http://localhost:5173
+
+
 app.use(cors({
     origin: "https://soen-ai-software-developer.vercel.app", // allow only your frontend origin
     methods: ["GET", "POST", "PUT", "DELETE"],

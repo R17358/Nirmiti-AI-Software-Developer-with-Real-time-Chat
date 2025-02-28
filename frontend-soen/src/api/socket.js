@@ -3,6 +3,8 @@ import { io } from "socket.io-client";
 
 let socketInstance = null;
 
+//http://localhost:4000
+
 
 export const initializeSocket = (projectId) => {
     socketInstance = io("https://soen-ai-software-developer.onrender.com", {
