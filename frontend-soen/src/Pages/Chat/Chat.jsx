@@ -217,48 +217,48 @@ function Chat({collapse}) {
                 Markdown,
                 {
                     children: `
-                    ${oneMessage?oneMessage + "\n\n" : ""}
+                    ${oneMessage ? oneMessage + "\n\n" : ""}
                     
                     ${message?.createCommands?.commands?.length ? 
                         `Create Commands:
                         \`\`\`sh
-                        ${message["createCommands"]["mainItem"]}
-                        ${message["createCommands"]["commands"].map(cmd => `\n${cmd}`).join(",")}
+                        ${message?.createCommands?.mainItem || ""}
+                        ${message?.createCommands?.commands?.map(cmd => `\n${cmd}`).join(",")}
                         \`\`\`
                         ` : ""}
         
-                        ${message?.buildCommands?.commands?.length ? 
-                            `Build Commands:
-                            \`\`\`sh
-                            ${message["buildCommands"]["mainItem"]}
-                            ${message["buildCommands"]["commands"].join(",\n")}
-                            \`\`\`
-                            ` : ""}
-                            
-                            ${message?.startCommands?.commands?.length ? 
-                            `Run Commands:
-                            \`\`\`sh
-                            ${message["startCommands"]["mainItem"]}
-                            ${message["startCommands"]["commands"].join(",\n")}
-                            \`\`\`
-                            ` : ""}
+                    ${message?.buildCommands?.commands?.length ? 
+                        `Build Commands:
+                        \`\`\`sh
+                        ${message?.buildCommands?.mainItem || ""}
+                        ${message?.buildCommands?.commands?.join(",\n")}
+                        \`\`\`
+                        ` : ""}
         
-        ${message?.fileTree?.text ? message.fileTree.text + "\n\n" : ""}
+                    ${message?.startCommands?.commands?.length ? 
+                        `Run Commands:
+                        \`\`\`sh
+                        ${message?.startCommands?.mainItem || ""}
+                        ${message?.startCommands?.commands?.join(",\n")}
+                        \`\`\`
+                        ` : ""}
         
-        `
+                    ${message?.fileTree?.text ? message.fileTree.text + "\n\n" : ""}
+                    `
                 }
             );
         
-            ReactDOM.render(markdownMessage, messageDiv);
+            // React 18 compatible rendering
+            const root = ReactDOM.createRoot(messageDiv);
+            root.render(markdownMessage);
+        } else {
+            messageDiv.textContent = message?.text || ""; // Safer than innerHTML
         }
         
-        else {
-            messageDiv.innerHTML = `<p>${message?.text}</p>`; 
-        }
-    
         chatBoxMessageSender.appendChild(chatMe);
         chatBoxMessageSender.appendChild(messageDiv);
         chatBox.appendChild(chatBoxMessageSender);
+        
     };
     
 
