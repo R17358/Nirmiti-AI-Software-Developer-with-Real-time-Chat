@@ -11,8 +11,15 @@ export const initializeSocket = (projectId) => {
         },
         query: {
             projectId
-        }
+        },
+        transports: ["websocket", "polling"]
     });
+
+    socketInstance.on("disconnect", (reason) => {
+        console.warn("Socket disconnected:", reason);
+        setTimeout(() => initializeSocket(projectId), 5000); // Reconnect in 5s
+    });
+    
 
     // Handle errors
     socketInstance.on("connect_error", (err) => {

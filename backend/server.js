@@ -19,12 +19,14 @@ const server = app.listen(process.env.PORT, () => {
 
 const io = new Server(server, {
   cors: {
-     origin: "https://soen-ai-software-developer.vercel.app",
-     methods: ["GET", "POST"],
-     allowedHeaders: ["Authorization"],
-     credentials: true
-  }
+    origin: ["https://soen-ai-software-developer.vercel.app", "http://localhost:5173"],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Authorization"],
+    credentials: true
+  },
+  transports: ["websocket", "polling"], // Allow both WebSocket and polling
 });
+
 
 
 // Middleware for authentication and project validation
