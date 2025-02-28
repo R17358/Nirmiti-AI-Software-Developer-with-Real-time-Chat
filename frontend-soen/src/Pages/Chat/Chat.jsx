@@ -9,6 +9,8 @@ import { initializeSocket, receiveMessage, sendMessage } from '../../api/socket'
 import Markdown from 'markdown-to-jsx'
 import ReactDOM from 'react-dom';
 import CodeEditor from './CodeEditor';
+import { ObjectId } from "mongodb";
+
 
 function Chat({collapse}) {
 
@@ -16,7 +18,6 @@ function Chat({collapse}) {
 
     useEffect(() => {
         const storedProject = localStorage.getItem("selectedProject");
-        console.log("Stored Project:", storedProject);
         if (storedProject) {
             setProject(JSON.parse(storedProject));
         }
@@ -26,8 +27,6 @@ function Chat({collapse}) {
     //     return <h2>No project data available</h2>;
     // }
 
-    
-    console.log("Project:", project);
 
     const dispatch = useDispatch();
 
@@ -49,11 +48,13 @@ function Chat({collapse}) {
     }, [dispatch]);
 
     useEffect(()=> {
-    initializeSocket(project?._id);
-    console.log("Project ID:", project?._id);
-    console.log("Socket initialized");
+
+    const validId = new ObjectId(project._id);
+    initializeSocket(validId);
+
+    console.log("Project ID:", validId);
+
     const handleMessage = (data) => {
-        console.log("Incoming message:");
         console.log(data);
         appendIncomingMessage(data);
     };
