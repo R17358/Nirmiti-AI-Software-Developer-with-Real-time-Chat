@@ -5,7 +5,7 @@ let socketInstance = null;
 //wss://soen-ai-software-developer.onrender.com
 
 export const initializeSocket = (projectId) => {
-    socketInstance = io('wss://soen-ai-software-developer.onrender.com', {
+    socketInstance = io('ws://soen-ai-software-developer.onrender.com', {
         auth: {
         token: localStorage.getItem("token")
         },
