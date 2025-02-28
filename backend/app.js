@@ -12,7 +12,7 @@ import project from "./routes/projectRoute.js"
 import gemini from "./routes/geminiRoute.js"
 
 app.use(cors({
-    origin: "http://localhost:5173", // allow only your frontend origin
+    origin: "https://soen-ai-software-developer.vercel.app", // allow only your frontend origin
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,               // allow cookies if needed
   }));
