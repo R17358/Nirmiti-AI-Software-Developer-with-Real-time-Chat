@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import './Chat.css'
 import {useDispatch, useSelector} from 'react-redux'
 import { getAllUsersInProject } from '../../actions/projectAction';
-import { useLocation } from 'react-router-dom';
 import { getAllUsers } from '../../actions/userAction';
 import { addUserToProject } from '../../actions/projectAction';
 import { initializeSocket, receiveMessage, sendMessage } from '../../api/socket';
@@ -22,9 +21,9 @@ function Chat({collapse}) {
         }
     }, []);
 
-    if (!project) {
-        return <h2>No project data available</h2>;
-    }
+    // if (!project) {
+    //     return <h2>No project data available</h2>;
+    // }
 
 
     const dispatch = useDispatch();
