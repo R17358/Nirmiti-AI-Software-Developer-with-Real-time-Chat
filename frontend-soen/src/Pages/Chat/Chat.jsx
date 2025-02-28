@@ -9,7 +9,6 @@ import { initializeSocket, receiveMessage, sendMessage } from '../../api/socket'
 import Markdown from 'markdown-to-jsx'
 import ReactDOM from 'react-dom';
 import CodeEditor from './CodeEditor';
-import { ObjectId } from "mongodb";
 
 
 function Chat({collapse}) {
