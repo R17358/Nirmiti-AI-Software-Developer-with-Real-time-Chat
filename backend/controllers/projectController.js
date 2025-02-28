@@ -211,3 +211,4 @@ export const updateFileTree = catchAsyncError(async (req, res, next) => {
     }
 
 }
+);
