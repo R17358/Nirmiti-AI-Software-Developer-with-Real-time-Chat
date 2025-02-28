@@ -169,7 +169,8 @@ function Chat({collapse}) {
         }
         
         console.log("Parsed message:", message); // Should now always be an object
-
+        const oneMessage = message.text;
+        console.log("One message:", oneMessage);
         const extractedFilesVar = extractFiles(message);
         // console.log("Extracted files variable:", extractedFilesVar);
         setExtractedFiles(extractedFilesVar);
@@ -209,7 +210,7 @@ function Chat({collapse}) {
                 Markdown,
                 {
                     children: `
-                    ${message?.text ? message.text + "\n\n" : ""}
+                    ${oneMessage?oneMessage + "\n\n" : ""}
                     
                     ${message?.createCommands?.commands?.length ? 
                         `Create Commands:
