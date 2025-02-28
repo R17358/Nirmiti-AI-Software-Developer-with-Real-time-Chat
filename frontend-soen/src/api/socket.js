@@ -3,11 +3,9 @@ import { io } from "socket.io-client";
 
 let socketInstance = null;
 
-//http://localhost:4000
-
 
 export const initializeSocket = (projectId) => {
-    socketInstance = io("https://soen-ai-software-developer.onrender.com", {
+    socketInstance = io('wss://soen-ai-software-developer.onrender.com', {
         auth: {
         token: localStorage.getItem("token")
         },

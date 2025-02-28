@@ -10,12 +10,12 @@ import path from 'path';
 import user from "./routes/userRoute.js"
 import project from "./routes/projectRoute.js"
 import gemini from "./routes/geminiRoute.js"
+import dotenv from "dotenv";
 
-//http://localhost:5173
 
 
 app.use(cors({
-    origin: "https://soen-ai-software-developer.vercel.app", // allow only your frontend origin
+    origin: process.env.FRONTEND_URL, // allow only your frontend origin
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,               // allow cookies if needed
   }));
