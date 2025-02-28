@@ -48,13 +48,12 @@ function Chat({collapse}) {
     }, [dispatch]);
 
     useEffect(()=> {
-
-    const validId = new ObjectId(project._id);
-    initializeSocket(validId);
-
-    console.log("Project ID:", validId);
+        
+    initializeSocket(project?._id.toString());
+    console.log("Project ID:", project?._id);
 
     const handleMessage = (data) => {
+        console.log("Incoming message:");
         console.log(data);
         appendIncomingMessage(data);
     };
