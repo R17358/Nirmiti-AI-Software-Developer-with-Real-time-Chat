@@ -12,13 +12,11 @@ function Home() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    console.log("Home");
     
     useEffect(() => {
         if (!isAuthenticated) {
             navigate('/login')
         }
-        console.log("Home useEffect");
         
     }, [isAuthenticated, navigate])
 
@@ -57,7 +55,7 @@ function Home() {
     const goToProject = (project) => {
         localStorage.setItem("selectedProject", JSON.stringify(project)); 
         console.log(project);
-        // navigate(`/chat`);      
+        navigate(`/chat`);      
     };
     
     return (
