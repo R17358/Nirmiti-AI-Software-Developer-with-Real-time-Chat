@@ -14,7 +14,7 @@ function Chat({collapse}) {
 
     const location = useLocation();
     const project = location.state?.project;
-
+    console.log("Project:", project);
 
     const dispatch = useDispatch();
 
