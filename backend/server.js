@@ -15,12 +15,12 @@ connectDB();
 const server = app.listen(process.env.PORT, () => {
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${process.env.PORT}`);
 });
-//https://soen-ai-software-developer.vercel.app
+//http://localhost:4000
 
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: "https://soen-ai-software-developer.vercel.app/",
   }
 });
 

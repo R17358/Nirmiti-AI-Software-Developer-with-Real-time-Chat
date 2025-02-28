@@ -15,7 +15,7 @@ import dotenv from "dotenv";
 
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL, // allow only your frontend origin
+    origin: "https://soen-ai-software-developer.vercel.app/", // allow only your frontend origin
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,               // allow cookies if needed
   }));
