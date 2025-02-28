@@ -5,7 +5,7 @@ let socketInstance = null;
 //wss://soen-ai-software-developer.onrender.com
 
 export const initializeSocket = (projectId) => {
-    socketInstance = io('wss://soen-ai-software-developer.onrender.com', {
+    socketInstance = io('https://soen-ai-software-developer.onrender.com', {
         auth: {
         token: localStorage.getItem("token")
         },
@@ -31,5 +31,6 @@ export const receiveMessage = (eventName, cb) => {
 }
 
 export const sendMessage = (eventName, data) => {
+    console.log('event sent', eventName, data);
     socketInstance.emit(eventName, data);
 }
