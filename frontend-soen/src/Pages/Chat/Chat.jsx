@@ -32,9 +32,6 @@ function Chat({collapse}) {
 
     const messageBox = React.createRef();
 
-    useEffect(() => {
-        // console.log("Updated extracted files for render:", extractedFiles);
-    }, [extractedFiles]); 
     
     useEffect(() => {
         dispatch(getAllUsers());
@@ -146,6 +143,7 @@ function Chat({collapse}) {
     
     
     const appendIncomingMessage = (data) => {
+        console.log("I am here :");
         let message = {};
         let sender = data.sender;
 
