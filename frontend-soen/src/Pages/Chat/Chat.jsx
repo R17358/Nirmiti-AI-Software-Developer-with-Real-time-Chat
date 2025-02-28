@@ -22,9 +22,9 @@ function Chat({collapse}) {
         }
     }, []);
 
-    // if (!project) {
-    //     return <h2>No project data available</h2>;
-    // }
+    if (!project) {
+        return <h2>No project data available</h2>;
+    }
 
 
     const dispatch = useDispatch();
@@ -49,11 +49,9 @@ function Chat({collapse}) {
     useEffect(()=> {
         
     initializeSocket(project?._id.toString());
-    console.log("Project ID:", project?._id);
 
     const handleMessage = (data) => {
-        console.log("Incoming message:");
-        console.log(data);
+
         appendIncomingMessage(data);
     };
 
@@ -160,17 +158,13 @@ function Chat({collapse}) {
     
     
     const appendIncomingMessage = (data) => {
-        console.log("I am here :");
+
         let message = {};
         let sender = data.sender;
-
-        console.log("data");
-        console.log(data);
     
-        // Ensure data.message is handled correctly
         if (typeof data.message === "string") {
             try {
-                // Ensure the string starts with '{' or '[' before parsing to avoid unexpected errors
+                
                 if (data.message.trim().startsWith("{") || data.message.trim().startsWith("[")) {
                     message = JSON.parse(data.message);
                 } else {
@@ -186,21 +180,17 @@ function Chat({collapse}) {
         }
         
         console.log("Parsed message:", message); // Should now always be an object
-        const oneMessage = message?.text || "Hello";
+        const oneMessage = message?.text || "";
         console.log("One message:", oneMessage);
         const extractedFilesVar = extractFiles(message);
-        // console.log("Extracted files variable:", extractedFilesVar);
         setExtractedFiles(extractedFilesVar);
-        console.log("Extracted files:", extractedFilesVar);
 
         let files = null;
         try {
             if (message.fileTree) {
-                console.log("message filetree");
-                console.log(message);
                 setFileTree(message?.fileTree);
                 files = getCodeFiles(message.fileTree); // Extract files only if fileTree exists
-                // console.log("Files:", files);
+    
             }
         } catch (error) {   
             console.log("No such file found");
@@ -222,49 +212,39 @@ function Chat({collapse}) {
         // Add "ai-class" dynamically
         messageDiv.classList.toggle("ai-class", sender === "AI");
     
-        if (sender === "AI") { 
-            const markdownMessage = React.createElement(
-                Markdown,
-                {
-                    children: `
-                    ${oneMessage?oneMessage + "\n\n" : ""}
-                    
-                    ${message?.createCommands?.commands?.length ? 
-                        `Create Commands:
-                        \`\`\`sh
-                        ${message["createCommands"]["mainItem"]}
-                        ${message["createCommands"]["commands"].map(cmd => `\n${cmd}`).join(",")}
-                        \`\`\`
-                        ` : ""}
+        if (sender === "AI") {
+            let messageContent = "";
         
-                        ${message?.buildCommands?.commands?.length ? 
-                            `Build Commands:
-                            \`\`\`sh
-                            ${message["buildCommands"]["mainItem"]}
-                            ${message["buildCommands"]["commands"].join(",\n")}
-                            \`\`\`
-                            ` : ""}
-                            
-                            ${message?.startCommands?.commands?.length ? 
-                            `Run Commands:
-                            \`\`\`sh
-                            ${message["startCommands"]["mainItem"]}
-                            ${message["startCommands"]["commands"].join(",\n")}
-                            \`\`\`
-                            ` : ""}
+            if (oneMessage) {
+                messageContent += oneMessage + "\n\n";
+            }
         
-        ${message?.fileTree?.text ? message.fileTree.text + "\n\n" : ""}
+            if (message?.createCommands?.commands?.length) {
+                messageContent += `Create Commands:\n\n\`\`\`sh\n${message["createCommands"]["mainItem"]}\n${message["createCommands"]["commands"].join("\n")}\n\`\`\`\n\n`;
+            }
         
-        `
-                }
-            );
+            if (message?.buildCommands?.commands?.length) {
+                messageContent += `Build Commands:\n\n\`\`\`sh\n${message["buildCommands"]["mainItem"]}\n${message["buildCommands"]["commands"].join("\n")}\n\`\`\`\n\n`;
+            }
         
-            ReactDOM.render(markdownMessage, messageDiv);
+            if (message?.startCommands?.commands?.length) {
+                messageContent += `Run Commands:\n\n\`\`\`sh\n${message["startCommands"]["mainItem"]}\n${message["startCommands"]["commands"].join("\n")}\n\`\`\`\n\n`;
+            }
+        
+            if (message?.fileTree?.text) {
+                messageContent += message.fileTree.text + "\n\n";
+            }
+        
+            if (messageContent.trim()) {
+                const markdownMessage = React.createElement(Markdown, { children: messageContent.trim() });
+                ReactDOM.render(markdownMessage, messageDiv);
+            } else {
+                messageDiv.innerHTML = "";
+            }
+        } else {
+            messageDiv.innerHTML = `<p>${message?.text || ""}</p>`;
         }
         
-        else {
-            messageDiv.innerHTML = `<p>${message?.text}</p>`; 
-        }
     
         chatBoxMessageSender.appendChild(chatMe);
         chatBoxMessageSender.appendChild(messageDiv);
