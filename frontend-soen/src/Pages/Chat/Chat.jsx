@@ -212,40 +212,39 @@ function Chat({collapse}) {
         messageDiv.classList.toggle("ai-class", sender === "AI");
     
         if (sender === "AI") { 
-            const markdownMessage = React.createElement(
-                Markdown,
-                {
-                    children: `
-                    ${oneMessage ? oneMessage + "\n\n" : ""}
-                    
-                    ${message?.createCommands?.commands?.length ? 
-                        `Create Commands:
-                        \`\`\`sh
-                        ${message?.createCommands?.mainItem || ""}
-                        ${message?.createCommands?.commands?.map(cmd => `\n${cmd}`).join(",")}
-                        \`\`\`
-                        ` : ""}
-        
-                    ${message?.buildCommands?.commands?.length ? 
-                        `Build Commands:
-                        \`\`\`sh
-                        ${message?.buildCommands?.mainItem || ""}
-                        ${message?.buildCommands?.commands?.join(",\n")}
-                        \`\`\`
-                        ` : ""}
-        
-                    ${message?.startCommands?.commands?.length ? 
-                        `Run Commands:
-                        \`\`\`sh
-                        ${message?.startCommands?.mainItem || ""}
-                        ${message?.startCommands?.commands?.join(",\n")}
-                        \`\`\`
-                        ` : ""}
-        
-                    ${message?.fileTree?.text ? message.fileTree.text + "\n\n" : ""}
-                    `
-                }
-            );
+
+            const sections = [];
+
+            if (oneMessage) {
+                sections.push(oneMessage);
+            }
+
+            if (message?.createCommands?.commands?.length) {
+                sections.push(
+                    `Create Commands:\n\`\`\`sh\n${message["createCommands"]["mainItem"]}\n${message["createCommands"]["commands"].join("\n")}\n\`\`\``
+                );
+            }
+
+            if (message?.buildCommands?.commands?.length) {
+                sections.push(
+                    `Build Commands:\n\`\`\`sh\n${message["buildCommands"]["mainItem"]}\n${message["buildCommands"]["commands"].join("\n")}\n\`\`\``
+                );
+            }
+
+            if (message?.startCommands?.commands?.length) {
+                sections.push(
+                    `Run Commands:\n\`\`\`sh\n${message["startCommands"]["mainItem"]}\n${message["startCommands"]["commands"].join("\n")}\n\`\`\``
+                );
+            }
+
+            if (message?.fileTree?.text) {
+                sections.push(message.fileTree.text);
+            }
+
+            // Join all non-empty sections with a double newline separator
+            const markdownMessage = React.createElement(Markdown, {
+                children: sections.join("\n\n"),
+            });
         
             // React 18 compatible rendering
             const root = ReactDOM.createRoot(messageDiv);
