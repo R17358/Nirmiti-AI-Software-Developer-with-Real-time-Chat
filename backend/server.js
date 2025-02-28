@@ -20,7 +20,7 @@ const server = app.listen(process.env.PORT, () => {
 
 const io = new Server(server, {
   cors: {
-    origin: "https://soen-ai-software-developer.vercel.app/",
+    origin: "https://soen-ai-software-developer.vercel.app",
   }
 });
 
