@@ -73,6 +73,8 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   }, [extractedFiles]);
 
   useEffect(() => {
+    console.log("Current File2:", currentFile);
+    console.log("Current Project2:", currProject);
     if (currentFile && currProject) {
       saveFileTree(fileTree, currProject);
     }
