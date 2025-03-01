@@ -20,25 +20,28 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   };
 
   
-  const saveFileTree = async(fileTree, currProject) => {
+  const saveFileTree = async (fileTree, currProject) => {
+    if (!currProject?._id) return;
+  
     console.log("Saving file tree:", fileTree);
     console.log("Current Project:", currProject);
-    const config = {
-      headers:{
-          "Content-Type":"application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`,
-      },
-      withCredentials: true,
-  };
-  console.log(currProject?._id);
-      await axios.post(`/update-file-tree`, { projectId: currProject?._id, fileTree }, config)
-          .then((response) => {
-              console.log("File tree saved:", response.data);
-          })
-          .catch((error) => {
-              console.error("Failed to save file tree:", error);
-          });
-  };
+  
+    try {
+      const response = await axios.post(
+        `/update-file-tree`,
+        { projectId: currProject._id, fileTree },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          withCredentials: true,
+        }
+      );
+      console.log("File tree saved:", response.data);
+    } catch (error) {
+      console.error("Failed to save file tree:", error);
+    }
 
   const openFile = (fileName) => {
     if (!openedFiles.includes(fileName)) {
@@ -72,14 +75,19 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
     }
   }, [extractedFiles]);
 
-  useEffect((currProject) => {
+  useEffect(() => {
     console.log("Current File2:", currentFile);
     console.log("Current Project2:", currProject);
     console.log("File Tree2:", fileTree);
-    if (currentFile && currProject) {
-      saveFileTree(fileTree, currProject);
+  
+    if (currentFile && currProject?._id) {
+      const saveTimeout = setTimeout(() => {
+        saveFileTree(fileTree, currProject);
+      }, 1000); // Debounce for 1s
+  
+      return () => clearTimeout(saveTimeout);
     }
-  }, [fileTree]);
+  }, [fileTree, currProject]);
 
   return (
     <div className="code-editor">
@@ -149,6 +157,7 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
       </div>
     </div>
   );
+};
 };
 
 export default CodeEditor;
