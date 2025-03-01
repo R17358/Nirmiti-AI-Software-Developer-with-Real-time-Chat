@@ -20,8 +20,9 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   };
 
   
-  const saveFileTree = (fileTree) => {
-
+  const saveFileTree = async(fileTree) => {
+    console.log("Saving file tree:", fileTree);
+    console.log("Current Project:", currProject);
     const config = {
       headers:{
           "Content-Type":"application/json",
@@ -29,7 +30,8 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
       },
       withCredentials: true,
   };
-      axios.post(`/update-file-tree`, { projectId: currProject?._id, fileTree }, config)
+  console.log(currProject?._id);
+      await axios.post(`/update-file-tree`, { projectId: currProject?._id, fileTree }, config)
           .then((response) => {
               console.log("File tree saved:", response.data);
           })
