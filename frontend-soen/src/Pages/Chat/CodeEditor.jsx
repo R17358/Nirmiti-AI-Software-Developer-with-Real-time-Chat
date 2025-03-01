@@ -20,7 +20,7 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
 
   
   const saveFileTree = (fileTree, project) => {
-    console.log("Saving file tree:", fileTree);
+    
     const config = {
       headers:{
           "Content-Type":"application/json",
@@ -28,13 +28,12 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
       },
       withCredentials: true,
   };
-  console.log(project?._id);
      axios.post(`/update-file-tree`, { projectId: project?._id, fileTree }, config)
           .then((response) => {
-              console.log("File tree saved:", response.data);
+              toast.success("File tree saved successfully");
           })
           .catch((error) => {
-              console.error("Failed to save file tree:", error);
+              toast.error("Failed to save file tree:", error);
           });
   };
 
