@@ -76,8 +76,8 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
     console.log("Current File2:", currentFile);
     console.log("Current Project2:", currProject);
     console.log("File Tree2:", fileTree);
-    if (currentFile && currProject) {
-      saveFileTree(fileTree, currProject);
+    if (currentFile) {
+      saveFileTree(fileTree);
     }
   }, [fileTree]);
 
