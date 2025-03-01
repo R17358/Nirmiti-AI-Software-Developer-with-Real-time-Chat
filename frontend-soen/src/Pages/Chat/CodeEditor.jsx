@@ -9,7 +9,6 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   const [currentFile, setCurrentFile] = useState(null);
   const [currentFileIndex, setCurrentFileIndex] = useState(0);
   const [copied, setCopied] = useState(false);
-  const [currProject, setCurrProject] = useState(project);
 
   const handleCopy = () => {
     const content = fileTree[currentFile]?.content || "";
@@ -20,9 +19,8 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   };
 
   
-  const saveFileTree = (fileTree) => {
+  const saveFileTree = (fileTree, project) => {
     console.log("Saving file tree:", fileTree);
-    console.log("Current Project:", currProject);
     const config = {
       headers:{
           "Content-Type":"application/json",
@@ -30,8 +28,8 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
       },
       withCredentials: true,
   };
-  console.log(currProject?._id);
-     axios.post(`/update-file-tree`, { projectId: currProject?._id, fileTree }, config)
+  console.log(project?._id);
+     axios.post(`/update-file-tree`, { projectId: project?._id, fileTree }, config)
           .then((response) => {
               console.log("File tree saved:", response.data);
           })
@@ -73,12 +71,8 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   }, [extractedFiles]);
 
   useEffect(() => {
-    console.log("Current File2:", currentFile);
-    console.log("Current Project2:", currProject);
-    console.log("File Tree2:", fileTree);
-    console.log("project2:", project);
     if (currentFile) {
-      saveFileTree(fileTree);
+      saveFileTree(fileTree, project);
     }
   }, [fileTree]);
 
