@@ -20,7 +20,7 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   };
 
   
-  const saveFileTree = async(fileTree) => {
+  const saveFileTree = async(fileTree, currProject) => {
     console.log("Saving file tree:", fileTree);
     console.log("Current Project:", currProject);
     const config = {
@@ -73,8 +73,8 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   }, [extractedFiles]);
 
   useEffect(() => {
-    if (currentFile) {
-      saveFileTree(fileTree);
+    if (currentFile && currProject) {
+      saveFileTree(fileTree, currProject);
     }
   }, [fileTree]);
 
