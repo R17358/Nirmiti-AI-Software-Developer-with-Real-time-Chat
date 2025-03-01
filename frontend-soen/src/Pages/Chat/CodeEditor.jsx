@@ -89,6 +89,8 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
     }
   }, [fileTree, currProject]);
 
+}
+
   return (
     <div className="code-editor">
       
@@ -158,6 +160,6 @@ const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
     </div>
   );
 };
-};
+
 
 export default CodeEditor;
