@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./CodeEditor.css";
 import "./Chat.css";
 import axios from "../../api/axios";
+import {toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 const CodeEditor = ({ fileTree, setFileTree, extractedFiles, project }) => {
   
