@@ -1,5 +1,7 @@
 # AI Software Developer
 
+Live: https://soen-ai-software-developer.vercel.app/
+
 ## Overview
 
 AI Software Developer is a **MERN stack** application designed to generate complete app or game code with a structured file tree. It also provides a real-time collaborative environment with chat functionality and AI-powered discussions using the **Gemini-1.5-Flash API**.
