@@ -45,7 +45,7 @@ Ensure you have the following installed:
 1. **Clone the repository**
 
    ```sh
-   git clone https://github.com/yourusername/AI-Software-Developer.git
+   https://github.com/R17358/AI-Software-Developer.git
    cd AI-Software-Developer
    ```
 
