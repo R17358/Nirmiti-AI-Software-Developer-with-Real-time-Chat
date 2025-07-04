@@ -62,9 +62,6 @@ function LoginPage() {
                             </div>
                         </div>
                     </div>
-                    <div className="forgot">
-                        <p>forgot password</p>
-                    </div>
                     <div className="login-button">
                         <button>LOG IN</button>
                         <Link to="/register">SignUp</Link>
