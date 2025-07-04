@@ -594,7 +594,7 @@ textarea::-webkit-scrollbar {
 
     .chat-container .left .chat-box-body {
         height: 77vh;
-        margin-left: 4vw;
+       margin-left: 4vw;
     }
     /* copy */
       .chat-container .left.left-collapse {
@@ -667,10 +667,21 @@ textarea::-webkit-scrollbar {
         max-height: 60vh;
     }
 
+     .my-message {
+        font-size: 16px;
+        max-height: 60vh;
+        overflow: scroll;
+    }
+
+    .my-message::-webkit-scrollbar{
+        display: none;
+    }
+
     .chat-box-body .chat-box-message-sender {
         min-width: 55vw;
-        min-height: 7vh;
+        min-height: 37vh;
         font-size: 12px;
+        overflow: scroll;
     }
 
     .send-message {
@@ -682,7 +693,14 @@ textarea::-webkit-scrollbar {
 
         width: 420vw;
     } */
+    #register{
+        width: 58vw;
+        height: 47.4vh;
+    }
 
+    #role{
+        width: 58vw;
+    }
 
 } 
 
@@ -727,6 +745,7 @@ textarea::-webkit-scrollbar {
 
     .chat-container .left .chat-box-body {
         height: 77vh;
+       margin-left: 4vw;
     }
 
     .Dashboard {
@@ -777,12 +796,18 @@ textarea::-webkit-scrollbar {
     .my-message {
         font-size: 16px;
         max-height: 60vh;
+        overflow: scroll;
+    }
+
+    .my-message::-webkit-scrollbar{
+        display: none;
     }
 
     .chat-box-body .chat-box-message-sender {
         min-width: 55vw;
-        min-height: 7vh;
-        font-size: 12px;
+        min-height: 37vh;
+        font-size: 20px;
+        overflow: scroll;
     }
 
     .send-message {
@@ -808,6 +833,10 @@ textarea::-webkit-scrollbar {
         display: flex;
         flex-direction: row;
     }
+     #register{
+        width: 58vw;
+        height: 47.4vh;
+    }
 }
 
 @media (min-width: 1105px) and (max-width:2000px) {
@@ -827,5 +856,8 @@ textarea::-webkit-scrollbar {
     .Dashboard {
         height: 4.3vh;
     }
-
+     #register{
+        width: 58vw;
+        height: 47.4vh;
+    }
 }
