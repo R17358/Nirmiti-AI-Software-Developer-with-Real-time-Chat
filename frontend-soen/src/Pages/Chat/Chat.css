@@ -535,12 +535,163 @@ textarea::-webkit-scrollbar {
     justify-content: center;
 }
 
-@media (max-width:700px) {
+@media (max-width:443px) {
+
+    .chat-container .right {
+
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .code-editor {
+        display: flex;
+        flex-direction: column !important;
+        margin-left: 3vw;
+        width: 82.9vw !important;
+    }
+
+    .file-list {
+
+        display: flex;
+        flex-direction: row !important;
+        width: 87vw;
+
+    }
+
+    .code-editor-right {
+        display: flex;
+        flex-direction: column;
+        width: 81.9vw !important;
+        margin-left: 5vw;
+    }
+
+    .code-editor-top {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .copy-button {
+        width: 10vw;
+    }
+
+    .code-editor-tabs {
+        width: 65vw;
+
+    }
+
+    .code-editor-body {
+        width: 74vw;
+        margin-left: 4vw;
+    }
+
+    .code-editor-body textarea {
+        width: 75vw !important;
+    }
+/* 
+     .code-editor-body textarea {
+        width: 47vw;
+    } */
+
+    .chat-container .left .chat-box-body {
+        height: 77vh;
+        margin-left: 4vw;
+    }
+    /* copy */
+      .chat-container .left.left-collapse {
+        margin-left: 5vw;
+        transition: all ease-in-out 0.6s;
+        width: 90vw;
+
+    }
+
+    .chat-container {
+        margin-left: 5px;
+        width: 94%;
+        transition: all ease-in-out 0.6s;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .chat-box {
+        position: relative;
+        width: 84vw;
+    }
+
+
+    .Dashboard {
+        height: 4.4vh;
+    }
+
+    .collaborator-panel {
+        width: 95vw;
+    }
+
+    .collab-body.show {
+        align-items: center;
+        margin-left: 10vw;
+    }
+
+    .collab-body.show .collablist {
+        width: 85vw;
+    }
+
+    .collab-body.show .collaborator-list {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    
+
+    .right .colab-panel.show {
+        width: 60vw;
+        left: 20%;
+    }
+
+    .right .user {
+        width: 60vw;
+    }
+
+    .chat-box-body .chat-box-message-my {
+        width: 60vw;
+        margin-left: 15.5vw;
+        height: 8vh;
+    }
+
+    .chat-me {
+        font-size: 12px;
+    }
+
+    .my-message {
+        font-size: 16px;
+        max-height: 60vh;
+    }
+
+    .chat-box-body .chat-box-message-sender {
+        min-width: 55vw;
+        min-height: 7vh;
+        font-size: 12px;
+    }
+
+    .send-message {
+        font-size: 18px;
+        margin-left: 0;
+    }
+
+    /* .code-editor-tabs {
+
+        width: 420vw;
+    } */
+
+
+} 
+
+@media (max-width:1100px) and (min-width:450px) {
 
     .chat-container .left.left-collapse {
-        margin-left: 11vw;
+        margin-left: 5vw;
         transition: all ease-in-out 0.6s;
-        width: 84vw;
+        width: 90vw;
 
     }
 
@@ -553,15 +704,16 @@ textarea::-webkit-scrollbar {
     }
 
     .code-editor {
-        width: 94vw;
-        margin-left: 7.3vw;
+        margin-left: 4.3vw;
+        width: 91vw;
     }
 
     .code-editor-right {
         display: flex;
         flex-direction: column;
         height: 90vh;
-        width: 68.51vw;
+        width: 86.9vw;
+        /* width: 68.51vw; */
     }
 
     .chat-box {
@@ -570,7 +722,7 @@ textarea::-webkit-scrollbar {
     }
 
     .file-list {
-        width: 83vw;
+        width: 87vw;
     }
 
     .chat-container .left .chat-box-body {
@@ -600,7 +752,7 @@ textarea::-webkit-scrollbar {
     }
 
     .copy-button {
-        width: 90vw;
+        width: 4vw;
     }
 
     .right .colab-panel.show {
@@ -623,7 +775,7 @@ textarea::-webkit-scrollbar {
     }
 
     .my-message {
-        font-size: 18px;
+        font-size: 16px;
         max-height: 60vh;
     }
 
@@ -644,16 +796,36 @@ textarea::-webkit-scrollbar {
     }
 
     .code-editor-body {
-        width: 79vw;
+        width: 54vw;
         margin-left: 4vw;
     }
 
     .code-editor-body textarea {
-        width: 76vw;
+        width: 47vw;
     }
 
     .code-editor-top {
         display: flex;
         flex-direction: row;
     }
+}
+
+@media (min-width: 1105px) and (max-width:2000px) {
+    .code-editor-right {
+        width: 58vw;
+
+    }
+
+    .code-editor-body {
+        width: 47vw;
+    }
+
+    .chat-container .left {
+        margin-left: -0.7vw;
+    }
+
+    .Dashboard {
+        height: 4.3vh;
+    }
+
 }
