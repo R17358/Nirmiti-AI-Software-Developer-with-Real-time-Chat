@@ -16,6 +16,8 @@
 .button-collapse{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
 }
 
 .button-collapse button{
@@ -31,9 +33,9 @@
   .header-username{
     display: flex;
     flex-direction: row;
-    margin-left: 66vw;
     color: #f4dcff91;
     font-size: 12px;
+    margin-right: 2vw;
   }
   
   .header-username a{
