@@ -100,7 +100,7 @@ input::placeholder{
     height: 30vh;
 }
 
-@media (max-width:400px) {
+@media (max-width:800px) {
     .logo img{
         width: 40vw;
     }
