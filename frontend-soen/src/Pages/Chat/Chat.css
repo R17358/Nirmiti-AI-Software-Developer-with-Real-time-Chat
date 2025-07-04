@@ -1,4 +1,4 @@
-.chat-container{
+.chat-container {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -10,12 +10,12 @@
     transition: all ease-in-out 0.6s;
 }
 
-.chat-box{
+.chat-box {
     position: relative;
     width: 24vw;
 }
 
-.chat-container .left{
+.chat-container .left {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -24,18 +24,18 @@
     transition: all ease-in-out 0.6s;
 }
 
-.chat-container .left .chat-box-header{
+.chat-container .left .chat-box-header {
     overflow-y: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.chat-box-header .head{
+.chat-box-header .head {
     text-transform: uppercase;
 }
 
-.chat-box-header .head button{
+.chat-box-header .head button {
     background: #9cbdbd00;
     color: cornsilk;
     border: none;
@@ -46,22 +46,22 @@
     cursor: pointer;
 }
 
-.chat-box-header .collaborator{
+.chat-box-header .collaborator {
     font-size: 25px;
     margin-top: 15px;
     margin-left: 10vw;
 }
 
-.collaborator:hover{
+.collaborator:hover {
     cursor: pointer;
 }
 
-.chat-container .left  h1{
+.chat-container .left h1 {
     color: white;
 }
 
 
-.chat-container .left .chat-box-body{
+.chat-container .left .chat-box-body {
     overflow-y: auto;
     display: flex;
     height: 72vh;
@@ -70,12 +70,12 @@
 }
 
 .chat-box-body::-webkit-scrollbar {
-   display: none;
+    display: none;
     scroll-behavior: smooth;
 }
 
 
-.chat-box-body .chat-box-message-my{
+.chat-box-body .chat-box-message-my {
     font-weight: bolder;
     display: flex;
     background: beige;
@@ -88,7 +88,7 @@
     max-height: 170vh;
 }
 
-.chat-me{
+.chat-me {
     color: #981ea6;
     font-weight: 900;
     margin-left: -3vw;
@@ -99,33 +99,33 @@
 }
 
 
-.ai-class{
+.ai-class {
     background-color: #190d1b !important;
     color: white !important;
 }
 
-.ai-class p{
+.ai-class p {
     color: #24ffd9;
     font-family: arial;
     font-style: italic;
     font-size: 13px;
 }
 
-.ai-class code{
+.ai-class code {
     color: #ceb4e0;
     font-family: arial;
     font-style: italic;
     font-size: 13px;
 }
 
-.ai-class li{
+.ai-class li {
     color: white;
     font-family: arial;
     font-style: italic;
     font-size: 13px;
 }
 
-.send-message{
+.send-message {
     color: #000000c9;
     font-family: arial;
     font-style: italic;
@@ -139,7 +139,7 @@
     border: 3px solid white;
 }
 
-.my-message{
+.my-message {
     color: #000000c9;
     font-family: arial;
     font-style: italic;
@@ -151,7 +151,7 @@
 }
 
 
-.chat-box-body .chat-box-message-sender{
+.chat-box-body .chat-box-message-sender {
     font-weight: bolder;
     display: flex;
     background: #ffffff;
@@ -175,17 +175,17 @@
     overflow-y: auto;
 }
 
-.chat-box-message-sender::-webkit-scrollbar{
+.chat-box-message-sender::-webkit-scrollbar {
     scroll-behavior: smooth;
     display: none;
 }
 
-.chat-box-message-my::-webkit-scrollbar{
+.chat-box-message-my::-webkit-scrollbar {
     scroll-behavior: smooth;
     display: none;
 }
 
-.chat-box-footer{
+.chat-box-footer {
     flex: 1;
     display: flex;
     justify-content: space-between;
@@ -195,7 +195,7 @@
     margin-top: 4px;
 }
 
-.chat-box-footer input{
+.chat-box-footer input {
     flex: 1;
     padding: 10px;
     border-radius: 20px;
@@ -203,34 +203,35 @@
     margin-right: 10px;
 }
 
-.chat-box-footer button{
+.chat-box-footer button {
     background: #00ffff00;
     border: none;
     font-size: 26px;
     cursor: pointer;
 }
 
-.chat-container .right{
+.chat-container .right {
     flex: 4;
     display: flex;
     flex-direction: row;
 }
 
-.chat-container.chat-collapse{
+.chat-container.chat-collapse {
     margin-left: 5px;
     width: 94%;
     transition: all ease-in-out 0.6s;
 }
 
-.chat-container .left.left-collapse{
+.chat-container .left.left-collapse {
     margin-left: 2px;
     transition: all ease-in-out 0.6s;
 }
+
 .collaborator-panel {
-    transform: translateX(-100%); 
-    opacity: 0;  
-    pointer-events: none; 
-    transition: transform 0.6s ease-in-out, opacity 2s ease-in-out; 
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.6s ease-in-out, opacity 2s ease-in-out;
     position: absolute;
     top: 0vh;
     left: 0vw;
@@ -240,10 +241,10 @@
 }
 
 .collaborator-panel.show {
-    transform: translateX(0); 
-    opacity: 1; 
-    pointer-events: auto; 
-    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out; 
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
 }
 
 .collab-body {
@@ -255,12 +256,12 @@
     flex-direction: column;
 }
 
-.collab-body.show .collablist{
+.collab-body.show .collablist {
     display: flex;
     flex-direction: column;
 }
 
-.collab-body.show .collaborator-list{
+.collab-body.show .collaborator-list {
     display: flex;
     padding: 3px 18px;
     flex-direction: row;
@@ -269,19 +270,19 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.collab-body.show .collaborator-list:hover{
+.collab-body.show .collaborator-list:hover {
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
-.collab-body.show .collaborator-list .collab-img{
+.collab-body.show .collaborator-list .collab-img {
     padding: 2px 2px;
     width: 5vw;
     height: 5vh;
     font-size: 36px;
 }
 
-.collab-body.show .collaborator-list  h3{
+.collab-body.show .collaborator-list h3 {
     color: white;
     font-size: 20px;
     font-weight: 900;
@@ -306,7 +307,7 @@
     cursor: pointer;
 }
 
-.right .colab-panel{
+.right .colab-panel {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -327,7 +328,7 @@
     pointer-events: none;
 }
 
-.right .colab-panel.show{
+.right .colab-panel.show {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -348,7 +349,7 @@
     pointer-events: all;
 }
 
-.right .user{
+.right .user {
     display: flex;
     flex-direction: row;
     padding: 1px 5px;
@@ -366,17 +367,17 @@
 }
 
 
-.right .user:hover{
+.right .user:hover {
     background-color: #981ea6;
 }
 
-.right .user .colab-logo{
+.right .user .colab-logo {
     width: 2vw;
     height: 2vh;
     font-size: 30px;
 }
 
-.right .user .colab-name{
+.right .user .colab-name {
     text-align: center;
     margin-top: -4px;
     margin-right: 3vw;
@@ -384,7 +385,7 @@
     font-family: sans-serif;
 }
 
-.add-colab-btn button{
+.add-colab-btn button {
     padding: 8px 33px;
     background-color: #190d1b;
     cursor: pointer;
@@ -394,11 +395,11 @@
     font-weight: 700;
 }
 
-.add-colab-btn button:hover{
+.add-colab-btn button:hover {
     background-color: red;
 }
 
-.collab-body.show p{
+.collab-body.show p {
     color: white;
     font-size: 20px;
     font-weight: 900;
@@ -406,7 +407,7 @@
     margin-top: 5px;
 }
 
-.right .file-tree{
+.right .file-tree {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -419,7 +420,7 @@
 }
 
 
-.file-tree-header{
+.file-tree-header {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -430,11 +431,11 @@
     border-radius: 16px;
 }
 
-.file-tree-header:hover{
+.file-tree-header:hover {
     background-color: #981ea6;
 }
 
-.file-tree-body{
+.file-tree-body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -449,7 +450,7 @@
     border-radius: 12px;
 }
 
-.file-tree-body ul{
+.file-tree-body ul {
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -458,7 +459,7 @@
     padding: 0vh 0vw;
 }
 
-.file-tree-body button{
+.file-tree-body button {
 
     text-decoration: none;
     font-size: 20px;
@@ -474,31 +475,31 @@
     border: none;
 }
 
-.file-tree-body button:hover{
+.file-tree-body button:hover {
     background-color: #5f446238;
     color: white;
     cursor: pointer;
 }
 
-.file-tree-body::-webkit-scrollbar{
+.file-tree-body::-webkit-scrollbar {
     display: none;
     scroll-behavior: smooth;
 }
 
-.file-tree-body button p{
+.file-tree-body button p {
     text-decoration: none;
     color: black;
     font-size: 16px;
 }
 
-.code-editor-body{
+.code-editor-body {
     display: flex;
     flex-direction: column;
     width: 51vw;
     height: 85vh;
 }
 
-.code-editor-body textarea{
+.code-editor-body textarea {
     height: 80vh;
     width: 43vw;
     background-color: #293637;
@@ -512,12 +513,12 @@
     font-style: italic;
 }
 
-textarea::-webkit-scrollbar{
+textarea::-webkit-scrollbar {
     display: none;
     scroll-behavior: smooth;
 }
 
-.code-editor-top h3{
+.code-editor-top h3 {
     margin-left: 2vw;
     font-size: 23px;
     color: aliceblue;
@@ -532,4 +533,127 @@ textarea::-webkit-scrollbar{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width:700px) {
+
+    .chat-container .left.left-collapse {
+        margin-left: 11vw;
+        transition: all ease-in-out 0.6s;
+        width: 84vw;
+
+    }
+
+    .chat-container {
+        margin-left: 5px;
+        width: 94%;
+        transition: all ease-in-out 0.6s;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .code-editor {
+        width: 94vw;
+        margin-left: 7.3vw;
+    }
+
+    .code-editor-right {
+        display: flex;
+        flex-direction: column;
+        height: 90vh;
+        width: 68.51vw;
+    }
+
+    .chat-box {
+        position: relative;
+        width: 84vw;
+    }
+
+    .file-list {
+        width: 83vw;
+    }
+
+    .chat-container .left .chat-box-body {
+        height: 77vh;
+    }
+
+    .Dashboard {
+        height: 4.4vh;
+    }
+
+    .collaborator-panel {
+        width: 95vw;
+    }
+
+    .collab-body.show {
+        align-items: center;
+        margin-left: 10vw;
+    }
+
+    .collab-body.show .collablist {
+        width: 85vw;
+    }
+
+    .collab-body.show .collaborator-list {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .copy-button {
+        width: 90vw;
+    }
+
+    .right .colab-panel.show {
+        width: 60vw;
+        left: 20%;
+    }
+
+    .right .user {
+        width: 60vw;
+    }
+
+    .chat-box-body .chat-box-message-my {
+        width: 60vw;
+        margin-left: 15.5vw;
+        height: 8vh;
+    }
+
+    .chat-me {
+        font-size: 12px;
+    }
+
+    .my-message {
+        font-size: 18px;
+        max-height: 60vh;
+    }
+
+    .chat-box-body .chat-box-message-sender {
+        min-width: 55vw;
+        min-height: 7vh;
+        font-size: 12px;
+    }
+
+    .send-message {
+        font-size: 18px;
+        margin-left: 0;
+    }
+
+    .code-editor-tabs {
+
+        width: 420vw;
+    }
+
+    .code-editor-body {
+        width: 79vw;
+        margin-left: 4vw;
+    }
+
+    .code-editor-body textarea {
+        width: 76vw;
+    }
+
+    .code-editor-top {
+        display: flex;
+        flex-direction: row;
+    }
 }
