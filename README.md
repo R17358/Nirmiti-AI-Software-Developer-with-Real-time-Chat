@@ -1,5 +1,7 @@
 # AI Software Developer
 
+Live: https://soen-ai-software-developer.vercel.app/
+
 ## Overview
 
 AI Software Developer is a **MERN stack** application designed to generate complete app or game code with a structured file tree. It also provides a real-time collaborative environment with chat functionality and AI-powered discussions using the **Gemini-1.5-Flash API**.
@@ -43,7 +45,7 @@ Ensure you have the following installed:
 1. **Clone the repository**
 
    ```sh
-   git clone https://github.com/yourusername/AI-Software-Developer.git
+   git clone https://github.com/R17358/AI-Software-Developer.git
    cd AI-Software-Developer
    ```
 
@@ -52,7 +54,7 @@ Ensure you have the following installed:
    ```sh
    cd backend
    npm install
-   cd ../frontend
+   cd ../frontend-soen
    npm install
    ```
 
@@ -63,6 +65,11 @@ Ensure you have the following installed:
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_secret_key
    GEMINI_API_KEY=your_gemini_api_key
+   PORT=4000
+   NODE_ENV=DEVELOPMENT
+   JWT_EXPIRE=5
+   COOKIE_EXPIRE=5 
+   FRONTEND_URL=
    ```
 
 4. **Run the application**
@@ -70,12 +77,12 @@ Ensure you have the following installed:
    - Start the backend:
      ```sh
      cd backend
-     npm start
+     npm run dev
      ```
    - Start the frontend:
      ```sh
      cd frontend
-     npm start
+     npm run dev
      ```
 
 5. **Access the application**
@@ -107,7 +114,7 @@ This project is licensed under the **MIT License**.
 
 ## Contact
 
-For any queries, reach out at **[your.email@example.com](mailto\:your.email@example.com)** or open an issue.
+For any queries, reach out at **[karanstdio1234@gmail.com](mailto\:karanstdio1234@gmail.com)** or open an issue.
 
 ---
 
