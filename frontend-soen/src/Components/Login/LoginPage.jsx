@@ -37,7 +37,7 @@ function LoginPage() {
     return (
         <div className='login-container'>
             <div className="logo">
-                <img src={logo} alt="freefire" width="400px" height="200px" />
+                <img src={logo} alt="freefire" />
             </div>
             <div className="login-form">
                 <div className="login-form-header">

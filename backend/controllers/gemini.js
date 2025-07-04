@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 dotenv.config({ path: "config.env" });
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import e, { text } from 'express';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
 
