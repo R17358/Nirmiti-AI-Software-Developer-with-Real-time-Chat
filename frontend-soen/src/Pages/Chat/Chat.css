@@ -81,11 +81,10 @@
     background: beige;
     flex-direction: column;
     align-items: center;
-    padding: 3px 13px;
+    padding: 1vh 2vw;
     border-radius: 9px;
     margin-left: 4.5vw;
     margin-top: 7px;
-    max-height: 170vh;
 }
 
 .chat-me {
@@ -126,15 +125,12 @@
 }
 
 .send-message {
+    padding: 2vw 2vh;
     color: #000000c9;
     font-family: arial;
     font-style: italic;
-    font-size: 13px;
-    min-width: 20vw;
-    max-width: 55vw;
     margin-top: 12px;
     border-radius: 3px;
-    padding-left: 1vw;
     margin-left: auto;
     border: 3px solid white;
 }
@@ -152,21 +148,15 @@
 
 
 .chat-box-body .chat-box-message-sender {
-    font-weight: bolder;
+    
     display: flex;
     background: #ffffff;
     flex-direction: column;
     align-items: center;
-    min-width: 17vw;
-    max-width: 22vw;
     font-size: 12px;
-    padding: 2px 4px;
     border-radius: 9px;
     margin-left: 5px;
     margin-top: 8px;
-    /* min-height: auto; */
-    max-height: 170vh;
-    /* overflow-x: auto; */
     word-wrap: break-word;
 }
 
@@ -535,6 +525,13 @@ textarea::-webkit-scrollbar {
     justify-content: center;
 }
 
+.my-message p{
+    overflow: scroll;
+    min-height: 4vh;
+    max-height: 3vh;
+    padding: 0vh 3vw;
+}
+
 @media (max-width:443px) {
 
     .chat-container .right {
@@ -574,6 +571,10 @@ textarea::-webkit-scrollbar {
         width: 10vw;
     }
 
+    .chat-box-footer{
+        margin-left: 5vw;
+    }
+
     .code-editor-tabs {
         width: 65vw;
 
@@ -593,8 +594,9 @@ textarea::-webkit-scrollbar {
     } */
 
     .chat-container .left .chat-box-body {
-        height: 77vh;
-       margin-left: 4vw;
+      height: 77vh;
+        margin-left: 8vw;
+        width: 80vw;
     }
     /* copy */
       .chat-container .left.left-collapse {
@@ -678,15 +680,15 @@ textarea::-webkit-scrollbar {
     }
 
     .chat-box-body .chat-box-message-sender {
-        min-width: 55vw;
-        min-height: 37vh;
         font-size: 12px;
-        overflow: scroll;
     }
 
     .send-message {
-        font-size: 18px;
-        margin-left: 0;
+       font-size: 18px;
+    }
+
+    .send-message::-webkit-scrollbar{
+        display: none;
     }
 
     /* .code-editor-tabs {
