@@ -664,10 +664,7 @@ textarea::-webkit-scrollbar {
         font-size: 12px;
     }
 
-    .my-message {
-        font-size: 16px;
-        max-height: 60vh;
-    }
+
 
      .my-message {
         font-size: 16px;
@@ -806,10 +803,7 @@ textarea::-webkit-scrollbar {
     }
 
     .chat-box-body .chat-box-message-sender {
-        min-width: 55vw;
-        min-height: 37vh;
         font-size: 20px;
-        overflow: scroll;
     }
 
     .send-message {
