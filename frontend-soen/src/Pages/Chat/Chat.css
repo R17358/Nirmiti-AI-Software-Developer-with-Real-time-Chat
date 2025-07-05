@@ -532,6 +532,10 @@ textarea::-webkit-scrollbar {
     padding: 0vh 3vw;
 }
 
+.my-message p::-webkit-scrollbar{
+    display: none;
+}
+
 @media (max-width:443px) {
 
     .chat-container .right {
