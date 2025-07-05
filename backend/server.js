@@ -19,7 +19,7 @@ const server = app.listen(process.env.PORT, () => {
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://soen-ai-software-developer.vercel.app", "http://localhost:5173"],
+    origin: ["https://nirmiti.vercel.app", "http://localhost:5173"],
     methods: ["GET", "POST"],
     allowedHeaders: ["Authorization"],
     credentials: true
@@ -73,13 +73,13 @@ io.on("connection", (socket) => {
 
     const message = data.message;
 
-    const isAIPresent = message.includes("@ai");
+   const isAIPresent = message.startsWith("*");
 
     socket.broadcast.to(socket.roomId).emit("project-message", data);
 
     if(isAIPresent)
     {
-      const prompt = message.replace("@ai", "");
+      const prompt = message.replace("*", "");
       
       const result = await generateResult({body: {prompt}});
       //console.log(result);

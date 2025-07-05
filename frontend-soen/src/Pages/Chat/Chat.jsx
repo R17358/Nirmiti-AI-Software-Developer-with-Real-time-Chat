@@ -295,7 +295,7 @@ function Chat({collapse}) {
                 
             </div>
             <div className="chat-box-footer">
-                    <input type="text" value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="@ai to chat with AI"/>
+                    <input type="text" value={message} onChange={(e)=>setMessage(e.target.value)} placeholder=" * to chat with AI" required={true}/>
                     <button type="button" onClick={send}>
                         <i className="bx bxs-send"></i>
                     </button>
