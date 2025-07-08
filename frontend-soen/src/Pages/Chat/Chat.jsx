@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Chat.css'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsersInProject } from '../../actions/projectAction';
 import { getAllUsers } from '../../actions/userAction';
 import { addUserToProject } from '../../actions/projectAction';
@@ -10,7 +10,7 @@ import ReactDOM from 'react-dom';
 import CodeEditor from './CodeEditor';
 
 
-function Chat({collapse}) {
+function Chat({ collapse }) {
 
     const [project, setProject] = useState(null);
 
@@ -39,26 +39,26 @@ function Chat({collapse}) {
     );
 
     const messageBox = React.createRef();
-    
+
     useEffect(() => {
         dispatch(getAllUsers());
     }, [dispatch]);
 
-    useEffect(()=> {
-        
-    initializeSocket(project?._id.toString());
+    useEffect(() => {
 
-    const handleMessage = (data) => {
+        initializeSocket(project?._id.toString());
 
-        appendIncomingMessage(data);
-    };
+        const handleMessage = (data) => {
 
-    receiveMessage("project-message", handleMessage);
+            appendIncomingMessage(data);
+        };
 
-    return () => {
         receiveMessage("project-message", handleMessage);
-    };
-}, [project?._id]);
+
+        return () => {
+            receiveMessage("project-message", handleMessage);
+        };
+    }, [project?._id]);
 
 
     useEffect(() => {
@@ -79,26 +79,26 @@ function Chat({collapse}) {
         };
     }, [message]);
 
-    const showCollaborators = async(projectId) => {
-       
+    const showCollaborators = async (projectId) => {
+
         setPanel(!panel);
-        try{
+        try {
             await dispatch(getAllUsersInProject(projectId));
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     }
 
-    const {user} = useSelector((state)=>state.user);
-    const {users} = useSelector((state) => state.projects);
+    const { user } = useSelector((state) => state.user);
+    const { users } = useSelector((state) => state.projects);
 
     const allUsers = useSelector((state) => state.allUsers.users);
 
     const [selectedUsers, setSelectedUsers] = useState([]);
 
     const handleUserClick = (userId) => {
-        setSelectedUsers((prevSelected) => 
+        setSelectedUsers((prevSelected) =>
             prevSelected.includes(userId)
                 ? prevSelected.filter(id => id !== userId) // Deselect user
                 : [...prevSelected, userId] // Select user
@@ -106,17 +106,16 @@ function Chat({collapse}) {
     };
 
     const handleAddClick = (projectId) => {
-        
-        try{
+
+        try {
             dispatch(addUserToProject(projectId, selectedUsers));
         }
-        catch(error)
-        {
+        catch (error) {
             console.log(error);
         }
     };
 
-    const send = ()=>{
+    const send = () => {
         sendMessage('project-message', {
             message,
             sender: user.email,
@@ -127,13 +126,13 @@ function Chat({collapse}) {
 
     function extractFiles(fileTree, path = "") {
         let files = [];
-    
+
         for (const key in fileTree) {
             // Ignore the specified keys
             if (["createCommands", "buildCommands", "startCommands"].includes(key)) {
                 continue;
             }
-    
+
             if (typeof fileTree[key] === "object" && fileTree[key] !== null && !fileTree[key].content) {
                 // Recursively extract files from nested objects
                 files = files.concat(extractFiles(fileTree[key], `${path}${key}/`));
@@ -145,20 +144,20 @@ function Chat({collapse}) {
                 files.push({ fileName: `${path}${key}`, content: fileTree[key] });
             }
         }
-    
+
         return files;
     }
-    
-    
-    
+
+
+
     const appendIncomingMessage = (data) => {
 
         let message = {};
         let sender = data.sender;
-    
+
         if (typeof data.message === "string") {
             try {
-                
+
                 if (data.message.trim().startsWith("{") || data.message.trim().startsWith("[")) {
                     message = JSON.parse(data.message);
                 } else {
@@ -172,7 +171,7 @@ function Chat({collapse}) {
         } else {
             message = data.message; // If it's already an object, use it directly
         }
-        
+
         console.log("Parsed message:", message); // Should now always be an object
         const oneMessage = message?.text || "";
         console.log("One message:", oneMessage);
@@ -183,29 +182,29 @@ function Chat({collapse}) {
         try {
             if (message.fileTree) {
                 setFileTree(message?.fileTree);
-    
+
             }
-        } catch (error) {   
+        } catch (error) {
             console.log("No such file found");
         }
-    
+
         const chatBox = document.querySelector('.chat-box-body');
-    
+
         const chatBoxMessageSender = document.createElement('div');
         chatBoxMessageSender.className = "chat-box-message-sender";
-    
+
         const chatMe = document.createElement('div');
         chatMe.className = "chat-me";
-    
+
         const messageDiv = document.createElement('div');
         messageDiv.className = "send-message";
-    
+
         chatMe.innerHTML = `<p>${sender}</p>`;
-    
+
         // Add "ai-class" dynamically
         messageDiv.classList.toggle("ai-class", sender === "AI");
-    
-        if (sender === "AI") { 
+
+        if (sender === "AI") {
 
             const sections = [];
 
@@ -239,23 +238,23 @@ function Chat({collapse}) {
             const markdownMessage = React.createElement(Markdown, {
                 children: sections.join("\n\n"),
             });
-        
+
             // React 18 compatible rendering
             const root = ReactDOM.createRoot(messageDiv);
             root.render(markdownMessage);
         } else {
             messageDiv.textContent = message?.text || ""; // Safer than innerHTML
         }
-        
+
         chatBoxMessageSender.appendChild(chatMe);
         chatBoxMessageSender.appendChild(messageDiv);
         chatBox.appendChild(chatBoxMessageSender);
-        
-    };
-    
 
-    const appendOutgoingMessage = (message, sender)=>{
-        
+    };
+
+
+    const appendOutgoingMessage = (message, sender) => {
+
         const chatBox = document.querySelector('.chat-box-body');
         const chatBoxMessageMy = document.createElement('div')
         chatBoxMessageMy.className = "chat-box-message-my"
@@ -268,7 +267,7 @@ function Chat({collapse}) {
         chatBoxMessageMy.appendChild(chatMe)
         chatBoxMessageMy.appendChild(messageDiv)
         chatBox.appendChild(chatBoxMessageMy);
-       
+
     }
 
     function scrollToBottom() {
@@ -276,83 +275,83 @@ function Chat({collapse}) {
             messageBox.current.scrollTop = messageBox.current.scrollHeight;
         }
     }
-   
-  return (
-    <div className={`chat-container ${collapse ? 'chat-collapse' : ''}`}>
-        <div className={`left ${collapse ? 'left-collapse' : ''}`}>
-            <div className="chat-box">
-                <div className="chat-box-header">
-                    <div className="head">
-                        <button type="button" onClick={()=>{setCollabPanel(!collabPanel)}}>Add Member +</button> 
+
+    return (
+        <div className={`chat-container ${collapse ? 'chat-collapse' : ''}`}>
+            <div className={`left ${collapse ? 'left-collapse' : ''}`}>
+                <div className="chat-box">
+                    <div className="chat-box-header">
+                        <div className="head">
+                            <button type="button" onClick={() => { setCollabPanel(!collabPanel) }}>Add Member +</button>
+                        </div>
+                        <div className="collaborator">
+                            <i className='bx bxs-user-detail' onClick={() => { showCollaborators(project?._id) }}></i>
+                        </div>
                     </div>
-                    <div className="collaborator">
-                        <i className='bx bxs-user-detail' onClick={()=>{showCollaborators(project?._id)}}></i>
+                    <div ref={messageBox} className="chat-box-body">
+
                     </div>
+
                 </div>
-                <div ref={messageBox} className="chat-box-body">
-                    
-                </div>
-                
-            </div>
-            <div className="chat-box-footer">
-                    <input type="text" value={message} onChange={(e)=>setMessage(e.target.value)} placeholder=" * to chat with AI" required={true}/>
+                <div className="chat-box-footer">
+                    <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder=" * to chat with AI" required={true} />
                     <button type="button" onClick={send}>
                         <i className="bx bxs-send"></i>
                     </button>
-            </div>
-        </div>
-        <div className={`collaborator-panel ${panel ? 'show' : ''}`}>
-            <div className={`collab-body ${panel ? 'show' : ''}`}>
-                <div className="button">
-                    <i className='bx bx-x' onClick={()=>{setPanel(!panel)}}></i>
                 </div>
-            {users.length > 0 ? (  
-                users.map((user) => (
-                    <div key={user._id} className="collablist">
-                        <div className="collaborator-list">
-                            <div className="collab-img">
-                                <i className='bx bxs-user-circle'></i>
-                            </div>
-                            <div className="collab-name">
-                                <h3>{user.email}</h3>
-                            </div>
-                        </div>
+            </div>
+            <div className={`collaborator-panel ${panel ? 'show' : ''}`}>
+                <div className={`collab-body ${panel ? 'show' : ''}`}>
+                    <div className="button">
+                        <i className='bx bx-x' onClick={() => { setPanel(!panel) }}></i>
                     </div>
-                ))
-            ) : (
-                <p>No collaborators found.</p>
-            )}
-        </div>
-    </div>
-    <div className="right">
-
-        <CodeEditor fileTree={fileTree} setFileTree={setFileTree} extractedFiles={extractedFiles} project={project}/>
-
-            <div className={`colab-panel ${collabPanel ? 'show' : ''}`}>
-                <div className="collablist">
-                    {allUsers?.map((user) => (
-                        <div
-                            key={user._id}
-                            className={`user ${selectedUsers.includes(user._id) ? "selected" : ""}`}
-                            onClick={() => handleUserClick(user._id)}
-                        >
-                            <div className="colab-logo">
-                                <i className='bx bxs-user-circle'></i>
+                    {users.length > 0 ? (
+                        users.map((user) => (
+                            <div key={user._id} className="collablist">
+                                <div className="collaborator-list">
+                                    <div className="collab-img">
+                                        <i className='bx bxs-user-circle'></i>
+                                    </div>
+                                    <div className="collab-name">
+                                        <h3>{user.email}</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="colab-name">
-                                <h3>{user.name}</h3>
-                            </div>
-                        </div>
-                    ))}
+                        ))
+                    ) : (
+                        <p>No collaborators found.</p>
+                    )}
                 </div>
+            </div>
+            <div className="right">
 
-                <div className="add-colab-btn">
-                    <button type="button" onClick={()=>handleAddClick(project?._id)}>ADD</button>
+                <CodeEditor fileTree={fileTree} setFileTree={setFileTree} extractedFiles={extractedFiles} project={project} />
+
+                <div className={`colab-panel ${collabPanel ? 'show' : ''}`}>
+                    <div className="collablist">
+                        {allUsers?.map((user) => (
+                            <div
+                                key={user._id}
+                                className={`user ${selectedUsers.includes(user._id) ? "selected" : ""}`}
+                                onClick={() => handleUserClick(user._id)}
+                            >
+                                <div className="colab-logo">
+                                    <i className='bx bxs-user-circle'></i>
+                                </div>
+                                <div className="colab-name">
+                                    <h3>{user.name}</h3>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="add-colab-btn">
+                        <button type="button" onClick={() => handleAddClick(project?._id)}>ADD</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Chat

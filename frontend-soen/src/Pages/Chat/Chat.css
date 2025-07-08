@@ -588,6 +588,7 @@ textarea::-webkit-scrollbar {
 
     .code-editor-body {
         width: 74vw;
+        height: 75vh;
         margin-left: 4vw;
     }
 
