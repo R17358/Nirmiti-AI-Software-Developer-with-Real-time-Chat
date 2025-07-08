@@ -1,6 +1,6 @@
 # AI Software Developer
 
-Live: https://soen-ai-software-developer.vercel.app/
+Live: https://nirmiti.vercel.app/
 
 ## Overview
 

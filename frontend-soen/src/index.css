@@ -35,4 +35,12 @@ body{
     display: none;
   }
   
-  
+  body::-webkit-scrollbar{
+    display: none;
+    scroll-behavior: smooth;
+  }
+
+   #root::-webkit-scrollbar{
+    display: none;
+    scroll-behavior: smooth;
+  }
