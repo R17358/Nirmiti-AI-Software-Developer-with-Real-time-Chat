@@ -76,6 +76,13 @@
     background: #0e031a;
     color: #0bd4a2;
     border-radius: 9px;
+    overflow: scroll;
+    min-width: 25vw;
+}
+
+.file-list button::-webkit-scrollbar{
+  display: none;
+  scroll-behavior: smooth;
 }
 
 .file-list button:hover{
