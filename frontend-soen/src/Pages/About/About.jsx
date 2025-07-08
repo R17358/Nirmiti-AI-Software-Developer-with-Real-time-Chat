@@ -1,15 +1,12 @@
-import React from 'react';
+// About.jsx
+import { useEffect } from 'react';
 
 const About = () => {
-  return (
-    <div className="h-screen w-full">
-      <iframe
-        src="https://ritesh-portfolio-in.vercel.app/"
-        title="Ritesh Portfolio"
-        className="w-full h-full border-none"
-      ></iframe>
-    </div>
-  );
+  useEffect(() => {
+    window.location.replace('https://ritesh-portfolio-in.vercel.app/');
+  }, []);
+
+  return null;
 };
 
 export default About;

@@ -10,7 +10,7 @@ function HeaderSidebar() {
    <div className="sidebar">
       <DashboardElement icon={<i className="bx bx-home"></i>} name="Dashboard" link="/"/>
       <DashboardElement icon={<i className='bx bx-phone-call'></i>} name="Chat" link="/chat" />
-      <DashboardElement icon={<i className="bx bx-group"></i>} name="Members" link="/aboutus"/>
+      <DashboardElement icon={<i className="bx bx-group"></i>} name="About Us" link="/aboutus"/>
       <DashboardElement icon={<i className="bx bx-refresh"></i>} name="Follow Ups" link="/follow"/>
       <DashboardElement icon={<i className='bx bx-book-alt' ></i>} name="Membership Plans" link="/plans"/>
       <DashboardElement icon={<i className='bx bx-calendar-alt' ></i>} name="Schedule" link="/schedule"/>
