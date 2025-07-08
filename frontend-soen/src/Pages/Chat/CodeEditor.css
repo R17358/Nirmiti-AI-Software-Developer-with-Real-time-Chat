@@ -77,7 +77,7 @@
     color: #0bd4a2;
     border-radius: 9px;
     overflow: scroll;
-    min-width: 25vw;
+   
 }
 
 .file-list button::-webkit-scrollbar{
@@ -104,4 +104,13 @@
   font-size: x-large;
   border: none;
   cursor: pointer;
+}
+
+@media screen(max-width:450px) {
+
+  .file-list button{
+    width:25vw;
+  }
+
+  
 }
