@@ -840,8 +840,8 @@ textarea::-webkit-scrollbar {
         flex-direction: row;
     }
      #register{
-        width: 58vw;
-        height: 47.4vh;
+       width: 30vw;
+        height: 43.4vh;
     }
 }
 
@@ -863,7 +863,7 @@ textarea::-webkit-scrollbar {
         height: 4.3vh;
     }
      #register{
-        width: 58vw;
-        height: 47.4vh;
+       width: 30vw;
+        height: 43.4vh;
     }
 }
