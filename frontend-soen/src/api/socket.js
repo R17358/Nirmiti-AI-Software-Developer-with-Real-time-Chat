@@ -6,6 +6,8 @@ let socketInstance = null;
 
 export const initializeSocket = (projectId) => {
     socketInstance = io('https://soen-ai-software-developer.onrender.com', {
+         reconnectionAttempts: 3,
+        reconnectionDelay: 3000, // 3 seconds
         auth: {
         token: localStorage.getItem("token")
         },
