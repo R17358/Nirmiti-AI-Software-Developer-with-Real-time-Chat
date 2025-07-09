@@ -12,7 +12,7 @@ export const isAuthenticatedUser = async (req, res, next) => {
     }
     const token = authHeader.split(" ")[1];
 
-    if(!token)
+    if(!token || typeof token !== 'string')
     {
         return next(new ErrorHandler("Please Login To access this Resource", 401));
     }

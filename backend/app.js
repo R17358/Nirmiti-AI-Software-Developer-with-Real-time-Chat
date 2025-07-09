@@ -11,6 +11,7 @@ import project from "./routes/projectRoute.js";
 import gemini from "./routes/geminiRoute.js";
 
 const app = express();
+app.set('trust proxy', 1);
 
 // ✅ Rate limiter first
 const limiter = rateLimit({
