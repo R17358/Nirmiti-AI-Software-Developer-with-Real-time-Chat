@@ -5,7 +5,7 @@ let socketInstance = null;
 //wss://soen-ai-software-developer.onrender.com
 
 export const initializeSocket = (projectId) => {
-    socketInstance = io('https://soen-ai-software-developer.onrender.com', {
+    socketInstance = io('https://nirmiti-ai-software-developer-with-real.onrender.com', {
          reconnectionAttempts: 3,
         reconnectionDelay: 3000, // 3 seconds
         auth: {
