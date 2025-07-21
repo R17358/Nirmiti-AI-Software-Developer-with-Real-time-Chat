@@ -64,7 +64,7 @@ io.use(async (socket, next) => {
   }
 });
 
-// Socket connection handling
+
 io.on("connection", (socket) => {
   socket.join(socket.roomId);
   console.log("A User Connected...");
