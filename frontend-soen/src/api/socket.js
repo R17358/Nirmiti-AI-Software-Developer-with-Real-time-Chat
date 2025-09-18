@@ -1,11 +1,13 @@
 import { io } from "socket.io-client";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 let socketInstance = null;
 
 //wss://soen-ai-software-developer.onrender.com
 
 export const initializeSocket = (projectId) => {
-    socketInstance = io('https://nirmiti-ai-software-developer-with-real.onrender.com', {
+    socketInstance = io(`${backendUrl}`, {
          reconnectionAttempts: 3,
         reconnectionDelay: 3000, 
         auth: {

@@ -6,7 +6,7 @@ import { getAllUsers } from '../../actions/userAction';
 import { addUserToProject } from '../../actions/projectAction';
 import { initializeSocket, receiveMessage, sendMessage } from '../../api/socket';
 import Markdown from 'markdown-to-jsx'
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import CodeEditor from './CodeEditor';
 
 
@@ -45,7 +45,7 @@ function Chat({ collapse }) {
     }, [dispatch]);
 
     useEffect(() => {
-
+        console.log(project?._id)
         initializeSocket(project?._id.toString());
 
         const handleMessage = (data) => {

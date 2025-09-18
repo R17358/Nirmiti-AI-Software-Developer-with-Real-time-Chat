@@ -1,10 +1,25 @@
-import axios from 'axios';
+// src/api/axios.js
+import axios from "axios";
 
-axios.defaults.withCredentials = true;
-const instance = axios.create({
-  baseURL: 'https://nirmiti-ai-software-developer-with-real.onrender.com/api/v1',
-  // baseURL: 'http://localhost:4000/api/v1', 
-  
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+const api = axios.create({
+  baseURL: `${backendUrl}/api/v1`,
+  withCredentials: true,
 });
 
-export default instance;
+// Interceptor to inject headers
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token && !config.headers.Authorization) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    config.headers["Content-Type"] =
+      config.headers["Content-Type"] || "application/json";
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+export default api;

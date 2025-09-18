@@ -19,7 +19,7 @@ const server = app.listen(process.env.PORT, () => {
 
 const io = new Server(server, {
   cors: {
-    origin: "https://nirmiti.vercel.app",
+    origin: process.env.FRONTEND_URL,
     // origin: ["https://nirmiti.vercel.app", "http://localhost:5173"],
     methods: ["GET", "POST"],
     credentials: true
@@ -47,11 +47,10 @@ io.use(async (socket, next) => {
       return next(new Error("Project ID is required"));
     }
 
-    if (!mongoose.Types.ObjectId.isValid(projectId)) {
-      return next(new Error("Invalid Project ID"));
-    }
+    console.log(projectId)
 
     const project = await Project.findById(projectId);
+
     if (!project) {
       return next(new Error("Project not found"));
     }
@@ -81,7 +80,7 @@ io.on("connection", (socket) => {
     {
       const prompt = message.replace("*", "");
       
-      const result = await generateResult({body: {prompt}});
+      const result = await generateResult(socket.roomId, prompt);
       //console.log(result);
       io.to(socket.roomId).emit("project-message",{
         message: result,

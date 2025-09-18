@@ -23,7 +23,7 @@ app.use("/api/v1", limiter);
 
 // ✅ CORS before all routes
 app.use(cors({
-  origin: "https://nirmiti.vercel.app",
+  origin: process.env.FRONTEND_URL,
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));

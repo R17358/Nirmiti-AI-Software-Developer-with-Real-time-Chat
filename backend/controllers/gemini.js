@@ -1,16 +1,33 @@
 //@google/generative-ai
 import dotenv from 'dotenv';
+import ErrorHandler from "../utils/errorHandler.js";
+import catchAsyncError from "../middleware/catchAsyncError.js";
 dotenv.config({ path: "config.env" });
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
 
+const store = {};
+
+function getHistory(sessionId) {
+    if (!store[sessionId]) {
+        store[sessionId] = [];
+    }
+    return store[sessionId];
+}
+
+function addMessage(sessionId, role, content) {
+    if (!store[sessionId]) store[sessionId] = [];
+    store[sessionId].push({ role, content });
+}
+
+
 const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
     generationConfig: {
-        responseMimeType:"application/json",
-        
+        responseMimeType: "application/json",
+
     },
     systemInstruction: `You are an expert in MERN, Web, Mobile, AI, Robotics(arduino) and Python app development with over 10 years of experience. Your responses must be fully structured, complete, and correct. Ensure that all applications include necessary files, dependencies, and commands. Follow these strict requirements:
 
@@ -108,16 +125,23 @@ const model = genAI.getGenerativeModel({
     }`
 });
 
-export const generateResult = async (req, res) => {
-    try {
-        const result = await model.generateContent(req.body.prompt);
+export const generateResult = async (projectId, prompt) => {
+  try {
+    if (!projectId) return "Project ID is missing";
+    if (!prompt) return "Prompt is missing";
 
-        //res.json(result.response.text());
+    const history = getHistory(projectId);
+    addMessage(projectId, "user", prompt);
 
-        return result.response.text();
-    }
-    catch (error) {
-        console.log(error);
+    const formattedHistory = history.map(h => `${h.role}: ${h.content}`).join("\n");
+    const content = `${prompt}\n\nPast conversation:\n${formattedHistory}`;
 
-    }
-}
+    const result = await model.generateContent(content);
+
+    addMessage(projectId, "ai", result.response.text);
+
+    return result.response.text();
+  } catch (error) {
+    console.log(error);
+  }
+};
