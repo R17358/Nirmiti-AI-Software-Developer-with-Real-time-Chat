@@ -1,11 +1,11 @@
-```
-Javascript
+# API Examples in JavaScript, Python, and C#
 
-```
-# GET
+---
 
-```
-```
+## **JavaScript**
+
+### **GET Request**
+```javascript
 // API call
 const response = await fetch("https://api.example.com/data");
 const data = await response.json();  // JSON string → Object
@@ -16,12 +16,10 @@ const str = JSON.stringify(data);
 
 // String → Object
 const obj = JSON.parse(str);
+```
 
-```
-```
-# POST
-```
-```
+### **POST Request**
+```javascript
 const body = { name: "Ritesh", age: 25 };
 
 const response = await fetch("https://api.example.com/users", {
@@ -32,16 +30,14 @@ const response = await fetch("https://api.example.com/users", {
 
 const result = await response.json();
 console.log(result);
-
 ```
 
-Python
+---
 
-```
-# GET
-```
+## **Python**
 
-```
+### **GET Request**
+```python
 import requests
 import json
 
@@ -55,31 +51,24 @@ str_data = json.dumps(data)
 
 # String → Object
 obj = json.loads(str_data)
-
 ```
 
-```
-# POST
-```
-```
-
+### **POST Request**
+```python
 import requests
 
 body = { "name": "Ritesh", "age": 25 }
 response = requests.post("https://api.example.com/users", json=body)
 
 print(response.json())
-
-
 ```
 
-C#
+---
 
-```
-# GET
-```
+## **C#**
 
-```
+### **GET Request**
+```csharp
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -105,11 +94,8 @@ class Program
 }
 ```
 
-```
-# POST
-```
-
-```
+### **POST Request**
+```csharp
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json.Linq;
@@ -128,8 +114,4 @@ var resultStr = await response.Content.ReadAsStringAsync();
 JObject result = JObject.Parse(resultStr);
 
 Console.WriteLine(result);
-
-```
-
-
 ```
