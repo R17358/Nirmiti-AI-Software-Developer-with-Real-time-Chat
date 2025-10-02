@@ -1,10 +1,17 @@
 
-
+# To  check
 
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
 
-# Configure API key
-genai.configure(api_key="AIzaSyCk_sBVFOTdlrSlsRGHWcK8OSj_eGUIXVk")
+
+load_dotenv()
+
+
+API = os.getenv("API")
+
+genai.configure(api_key=API)
 
 # Choose a model
 model = genai.GenerativeModel("gemini-2.0-flash")
@@ -12,4 +19,6 @@ model = genai.GenerativeModel("gemini-2.0-flash")
 # Generate content
 response = model.generate_content("Explain how AI works in a few words")
 
-print(response.text)
+print(response)
+
+
