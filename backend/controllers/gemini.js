@@ -24,7 +24,7 @@ function addMessage(sessionId, role, content) {
 
 
 const model = genAI.getGenerativeModel({
-    model: "gemini-2.0-flash",
+    model: process.env.GEMINI_MODEL,
     generationConfig: {
         responseMimeType: "application/json",
 
